@@ -475,6 +475,110 @@
     }
 
     /* =========================================================================
+       TAB 0: HOME VIEW — INTERACTIVE CALENDAR, DUE PANEL & INSIGHTS
+       ========================================================================= */
+    .home-cal-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 4px;
+      margin-bottom: 6px;
+      text-align: center;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    .home-cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 5px;
+    }
+
+    .home-cal-cell {
+      appearance: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+    .home-cal-cell.blank {
+      background: transparent;
+      pointer-events: none;
+    }
+    .home-cal-cell.today {
+      border-color: rgba(255, 255, 255, 0.52);
+      background: rgba(255, 255, 255, 0.10);
+    }
+    .home-cal-cell.selected {
+      background: #ffffff;
+      color: #14181f;
+      border-color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.30);
+    }
+    .home-cal-cell:active:not(.blank) {
+      transform: scale(0.93);
+    }
+
+    .home-cal-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      height: 6px;
+    }
+    .home-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+    }
+    .home-dot.pending { background: var(--accent-amber); }
+    .home-dot.overdue { background: var(--accent-coral); }
+    .home-dot.paid { background: var(--accent-emerald); }
+    .home-dot.income { background: #60a5fa; }
+    .home-dot.skipped { background: rgba(203, 213, 225, 0.55); }
+    .home-cal-cell.selected .home-dot.skipped { background: rgba(20, 24, 31, 0.45); }
+
+    .home-due-divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.10);
+      margin: 14px 0 12px;
+    }
+
+    .home-due-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+    }
+
+    .insight-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(26px) saturate(140%);
+      -webkit-backdrop-filter: blur(26px) saturate(140%);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow), var(--glass-highlight);
+      border-radius: var(--radius-card);
+      padding: 15px 16px;
+    }
+
+    /* =========================================================================
        TAB 1: EXPENSES & CHARTS
        ========================================================================= */
     .budget-top-row {
@@ -644,9 +748,39 @@
       gap: 6px;
       flex-shrink: 0;
     }
+    .due-day-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      padding: 0 7px;
+      height: 33px;
+      border-radius: 11px;
+      background: rgba(0, 0, 0, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      flex-shrink: 0;
+    }
+    .due-day-prefix {
+      font-size: 0.66rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+    .due-day-input {
+      width: 24px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-align: center;
+      color: #ffffff;
+      background: transparent;
+      border: none;
+      outline: none;
+    }
     .bill-amt-wrap {
       position: relative;
-      width: 102px;
+      width: 96px;
     }
     .bill-amt-wrap .rupee-prefix {
       position: absolute;
@@ -819,8 +953,8 @@
     }
     .bottom-nav {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 6px;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 4px;
       padding: 6px;
       border-radius: 24px;
       background: rgba(22, 26, 32, 0.74);
@@ -835,13 +969,13 @@
       align-items: center;
       justify-content: center;
       gap: 3px;
-      padding: 8px 4px;
+      padding: 8px 2px;
       border-radius: 18px;
       border: none;
       background: transparent;
       color: var(--text-secondary);
       font-family: inherit;
-      font-size: 0.68rem;
+      font-size: 0.64rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.16s ease;
@@ -1053,126 +1187,126 @@
   <div class="app-shell">
 
     <!-- ===================================================================
-         TOP HEADER:
-         - Tappable large "KOSAH" title (jumps to current month, no refresh icon)
-         - Compact "| NOV 2026" pill with two invisible 32px flanking tap zones
+         TAB 0: HOME VIEW (DEFAULT LANDING TAB — CALENDAR + DUE PANEL + INSIGHTS)
          =================================================================== -->
-    <header class="app-header">
-      <button id="btn-brand-today" type="button" class="brand-title-btn" aria-label="Kosah — Tap to jump to current month">KOSAH</button>
-      <div class="month-nav-group">
-        <button id="btn-prev-month-zone" type="button" class="invisible-nav-zone" aria-label="Previous Month"></button>
-        <button id="btn-open-calendar" type="button" class="month-pill-btn" aria-label="Select Month and Year">
-          <span class="month-pill-bar"></span>
-          <span class="month-pill-text">
-            <span id="header-month-short" class="m-bold">NOV</span>
-            <span id="header-year" class="y-thin">2026</span>
-          </span>
-        </button>
-        <button id="btn-next-month-zone" type="button" class="invisible-nav-zone" aria-label="Next Month"></button>
-      </div>
-    </header>
-
-    <!-- ===================================================================
-         TAB 1: EXPENSES
-         =================================================================== -->
-    <section id="panel-expenses" class="tab-panel active">
-      <!-- Monthly Budget Card -->
+    <section id="panel-home" class="tab-panel active">
+      <!-- Top Interactive Monthly Calendar & Selected Day Due Panel -->
       <div class="glass-card">
-        <div class="card-header">
+        <div class="card-header" style="margin-bottom:12px;">
           <div class="accent-bar-wrap">
             <span class="v-bar"></span>
-            <span class="card-title">MONTHLY <span class="thin">BUDGET</span></span>
+            <span class="card-title">DUE <span class="thin">CALENDAR</span></span>
           </div>
-          <button id="btn-edit-budget" type="button" class="btn-pill sm">Edit Limit</button>
-        </div>
-
-        <div class="budget-top-row">
-          <div>
-            <div id="exp-remaining-val" class="big-stat">₹0</div>
-            <div id="exp-remaining-label" class="label-muted" style="margin-top:4px;">remaining this month</div>
+          <div style="display:flex; align-items:center; gap:8px; font-size:0.65rem; color:var(--text-secondary);">
+            <span style="display:inline-flex; align-items:center; gap:4px;"><span class="home-dot pending"></span>Due</span>
+            <span style="display:inline-flex; align-items:center; gap:4px;"><span class="home-dot paid"></span>Paid</span>
+            <span style="display:inline-flex; align-items:center; gap:4px;"><span class="home-dot income"></span>In</span>
           </div>
-          <div id="exp-pct-label" style="font-size:1.15rem; font-weight:800; color:#ffffff;">0%</div>
         </div>
 
-        <div class="progress-track">
-          <div id="exp-progress-fill" class="progress-fill" style="width:0%;"></div>
+        <div class="home-cal-weekdays">
+          <span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span>
         </div>
+        <div id="home-cal-grid" class="home-cal-grid"></div>
 
-        <div class="budget-meta-row">
-          <span>Spent <strong id="exp-spent-val">₹0</strong></span>
-          <span>Budget <strong id="exp-budget-val">₹0</strong></span>
-        </div>
-      </div>
-
-      <!-- Quick Action Bar -->
-      <div style="display:flex; gap:10px;">
-        <button id="btn-new-expense" type="button" class="btn-pill primary full" style="flex:1;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          New Expense
-        </button>
-        <button id="btn-manage-categories" type="button" class="btn-pill" style="padding:12px 16px;">
-          Categories
-        </button>
-      </div>
-
-      <!-- Per-Category Interactive SVG Chart (Donut / VERTICAL Bar) -->
-      <div class="glass-card">
-        <div class="card-header">
+        <!-- Tap-on-Day Due Panel -->
+        <div class="home-due-divider"></div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:10px;">
           <div class="accent-bar-wrap">
-            <span class="v-bar"></span>
-            <span class="card-title">CATEGORY <span class="thin">SPLIT</span></span>
+            <span class="v-bar gold"></span>
+            <span id="home-selected-day-title" class="card-title" style="font-size:0.84rem;">25 NOV 2026 • 0 DUE</span>
           </div>
-          <div class="segmented-toggle" role="group" aria-label="Chart Type">
-            <button id="btn-chart-donut" type="button" class="active">Donut</button>
-            <button id="btn-chart-bar" type="button">Bar</button>
+          <div style="display:flex; gap:6px;">
+            <button id="btn-home-add-exp" type="button" class="btn-pill sm">+ Expense</button>
           </div>
         </div>
-        <div id="exp-chart-stage" class="chart-stage"></div>
-        <div id="exp-cat-legend" class="cat-legend-list"></div>
+
+        <div id="home-due-list" class="section-stack" style="gap:8px;"></div>
+        <div id="home-day-expenses-wrap" style="display:none; margin-top:10px;">
+          <div class="label-muted" style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px;">Expenses on this day</div>
+          <div id="home-day-expenses-list" class="section-stack" style="gap:6px;"></div>
+        </div>
       </div>
 
-      <!-- Recent Expenses List -->
-      <div class="glass-card">
-        <div class="card-header">
-          <div class="accent-bar-wrap">
-            <span class="v-bar"></span>
-            <span class="card-title">RECENT <span class="thin">EXPENSES</span></span>
+      <!-- Bottom Section: Financial Insights -->
+      <div class="section-stack" style="gap:12px;">
+        <!-- Insight 1: Monthly Budget Health -->
+        <div class="insight-card">
+          <div class="card-header" style="margin-bottom:8px;">
+            <div class="accent-bar-wrap">
+              <span class="v-bar"></span>
+              <span class="card-title" style="font-size:0.82rem;">BUDGET <span class="thin">HEALTH</span></span>
+            </div>
+            <span id="ins-budget-pct" style="font-size:0.84rem; font-weight:800;">0%</span>
           </div>
-          <span id="exp-count-badge" class="label-muted">0 entries</span>
+          <div style="display:flex; align-items:baseline; justify-content:space-between; gap:10px;">
+            <div>
+              <div id="ins-budget-rem" style="font-size:1.35rem; font-weight:800;">₹0</div>
+              <div id="ins-budget-sub" class="label-muted" style="margin-top:2px;">remaining of ₹0</div>
+            </div>
+            <div style="text-align:right;">
+              <div id="ins-daily-safe" style="font-size:0.95rem; font-weight:700; color:var(--accent-emerald);">₹0/day</div>
+              <div id="ins-daily-safe-lbl" class="label-muted" style="margin-top:2px;">safe to spend</div>
+            </div>
+          </div>
+          <div class="progress-track" style="margin:10px 0 0;">
+            <div id="ins-budget-bar" class="progress-fill" style="width:0%;"></div>
+          </div>
         </div>
-        <div id="exp-list" class="section-stack" style="gap:9px;"></div>
+
+        <!-- Insight 2: Upcoming & Pending Bills -->
+        <div class="insight-card">
+          <div class="card-header" style="margin-bottom:8px;">
+            <div class="accent-bar-wrap">
+              <span class="v-bar amber"></span>
+              <span class="card-title" style="font-size:0.82rem;">UPCOMING &amp; <span class="thin">PENDING</span></span>
+            </div>
+            <span id="ins-pending-count" class="type-badge" style="color:var(--accent-amber); border-color:rgba(245,197,66,0.35);">0 PENDING</span>
+          </div>
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
+            <div>
+              <div id="ins-pending-total" style="font-size:1.25rem; font-weight:800;">₹0</div>
+              <div class="label-muted" style="margin-top:2px;">total unpaid bills</div>
+            </div>
+            <div id="ins-next-due-box" style="text-align:right; max-width:56%;">
+              <div id="ins-next-due-name" style="font-size:0.84rem; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">All clear</div>
+              <div id="ins-next-due-when" class="label-muted" style="margin-top:2px;">No pending due dates</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Insight 3 & 4: Cashflow Snapshot + Top Spending Category -->
+        <div class="grid-2" style="gap:12px;">
+          <div class="insight-card">
+            <div class="accent-bar-wrap" style="margin-bottom:8px;">
+              <span class="v-bar emerald"></span>
+              <span class="card-title" style="font-size:0.74rem;">CASHFLOW</span>
+            </div>
+            <div id="ins-cf-net" style="font-size:1.15rem; font-weight:800;">₹0</div>
+            <div class="label-muted" style="margin-top:2px;">Net · <strong id="ins-cf-save-rate" style="color:var(--accent-gold);">0% saved</strong></div>
+            <div style="display:flex; justify-content:space-between; margin-top:10px; font-size:0.72rem; color:var(--text-secondary);">
+              <span>In <strong id="ins-cf-in" class="text-emerald">₹0</strong></span>
+              <span>Out <strong id="ins-cf-out" class="text-coral">₹0</strong></span>
+            </div>
+          </div>
+
+          <div class="insight-card">
+            <div class="accent-bar-wrap" style="margin-bottom:8px;">
+              <span class="v-bar gold"></span>
+              <span class="card-title" style="font-size:0.74rem;">TOP SPEND</span>
+            </div>
+            <div id="ins-top-cat-name" style="font-size:1.05rem; font-weight:800; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">—</div>
+            <div id="ins-top-cat-amt" style="font-size:0.9rem; font-weight:700; color:var(--accent-gold); margin-top:4px;">₹0</div>
+            <div id="ins-top-cat-pct" class="label-muted" style="margin-top:3px;">No expenses yet</div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ===================================================================
-         TAB 2: BILLS & CASHFLOW
+         TAB 1: EXPENSES
          =================================================================== -->
-    <section id="panel-bills" class="tab-panel">
-      <!-- Empty Month Prompt -->
-      <div id="bills-empty-card" class="glass-card" style="display:none; text-align:center; padding:28px 18px;">
-        <div class="card-title" id="bills-empty-heading" style="margin-bottom:8px;">NO SHEET FOR THIS MONTH</div>
-        <p class="label-muted" style="margin-bottom:18px; line-height:1.5;">
-          Initialize a blank monthly bills &amp; cashflow sheet from your saved master template.
-        </p>
-        <button id="btn-init-bills-month" type="button" class="btn-pill primary">Generate Blank Sheet</button>
-      </div>
-
-      <!-- Active Bills Content -->
-      <div id="bills-active-wrap" class="section-stack">
-        <!-- Summary Strip -->
-        <div class="glass-card">
-          <div class="card-header" style="margin-bottom:12px;">
-            <div class="accent-bar-wrap">
-              <span class="v-bar"></span>
-              <span class="card-title">CASHFLOW <span class="thin">SUMMARY</span></span>
-            </div>
-          </div>
-          <div class="grid-2">
-            <div class="summary-tile">
-              <div class="label-muted">Total Income</div>
-              <div id="bill-sum-income" class="val text-emerald">₹0</div>
-            </div>
-            <div class="summary-tile">
+    <section id="panel-expenses" class="tab-panel">
               <div class="label-muted">Total Spend (Bills + Exp)</div>
               <div id="bill-sum-outflow" class="val text-coral">₹0</div>
             </div>
@@ -1360,6 +1494,9 @@
           <a id="link-open-local-blob" href="#" target="_blank" rel="noopener" class="btn-pill primary full">
             Open Local Data File
           </a>
+          <button id="btn-save-sync-file" type="button" class="btn-pill full">
+            Save / Sync Local File
+          </button>
           <div class="grid-2">
             <button id="btn-export-json" type="button" class="btn-pill">Download JSON Backup</button>
             <label for="input-import-json" class="btn-pill" style="cursor:pointer;">
@@ -1373,7 +1510,7 @@
           </div>
         </div>
         <p class="label-muted" style="margin-top:10px; line-height:1.45;">
-          100% private on-device storage. Zero data is ever sent to GitHub or any external server.
+          100% private on-device storage. Zero data is ever sent to GitHub. On iPhone/iPad, tap <strong>Save / Sync Local File</strong> or <strong>Download JSON Backup</strong> and choose <strong>Save to Files → On My iPhone</strong> to access your data anytime outside the app.
         </p>
       </div>
 
@@ -1402,15 +1539,24 @@
        ===================================================================== -->
   <nav class="bottom-nav-wrap" aria-label="Main Navigation">
     <div class="bottom-nav">
-      <button type="button" class="nav-item active" data-tab="expenses">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <button type="button" class="nav-item active" data-tab="home">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="3" />
+          <line x1="16" y1="2" x2="16" y2="6" />
+          <line x1="8" y1="2" x2="8" y2="6" />
+          <line x1="3" y1="10" x2="21" y2="10" />
+        </svg>
+        <span>Home</span>
+      </button>
+      <button type="button" class="nav-item" data-tab="expenses">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="5" width="20" height="14" rx="3" />
           <line x1="2" y1="10" x2="22" y2="10" />
         </svg>
         <span>Expenses</span>
       </button>
       <button type="button" class="nav-item" data-tab="bills">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" />
           <rect x="9" y="3" width="6" height="4" rx="1" />
           <path d="M9 14l2 2 4-4" />
@@ -1418,13 +1564,13 @@
         <span>Bills</span>
       </button>
       <button type="button" class="nav-item" data-tab="overview">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
         </svg>
         <span>Overview</span>
       </button>
       <button type="button" class="nav-item" data-tab="vault">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="11" width="18" height="11" rx="3" />
           <path d="M7 11V7a5 5 0 0 1 10 0v4" />
         </svg>
@@ -1560,6 +1706,10 @@
           <label for="inp-item-name">Item Name</label>
           <input id="inp-item-name" type="text" maxlength="32" required placeholder="e.g. Car Loan, SBI Card, SIP" class="glass-input" />
         </div>
+        <div class="form-field">
+          <label for="inp-item-due-day">Due Day of Month (1–31, optional)</label>
+          <input id="inp-item-due-day" type="number" min="1" max="31" placeholder="e.g. 5, 15, 28" class="glass-input" />
+        </div>
         <label class="checkbox-card">
           <input id="inp-item-template" type="checkbox" checked />
           <span>Include in future auto-generated months</span>
@@ -1622,11 +1772,11 @@
             { id: 'cat_misc', name: 'Misc', color: '#cbd5e1' }
           ],
           billTemplate: [
-            { id: 'sec_loan', name: 'Loan', type: 'expense', items: [{ id: 'item_home', name: 'Home' }] },
-            { id: 'sec_cc', name: 'Credit cards', type: 'expense', items: [{ id: 'item_amex', name: 'Amex' }] },
-            { id: 'sec_other', name: 'Other', type: 'expense', items: [{ id: 'item_maid', name: 'Maid' }] },
-            { id: 'sec_saving', name: 'Saving', type: 'saving', items: [{ id: 'item_mf', name: 'Mutual Fund' }] },
-            { id: 'sec_income', name: 'Income', type: 'income', items: [{ id: 'item_salary', name: 'Salary' }] }
+            { id: 'sec_loan', name: 'Loan', type: 'expense', items: [{ id: 'item_home', name: 'Home', dueDay: 5 }] },
+            { id: 'sec_cc', name: 'Credit cards', type: 'expense', items: [{ id: 'item_amex', name: 'Amex', dueDay: 15 }] },
+            { id: 'sec_other', name: 'Other', type: 'expense', items: [{ id: 'item_maid', name: 'Maid', dueDay: 1 }] },
+            { id: 'sec_saving', name: 'Saving', type: 'saving', items: [{ id: 'item_mf', name: 'Mutual Fund', dueDay: 10 }] },
+            { id: 'sec_income', name: 'Income', type: 'income', items: [{ id: 'item_salary', name: 'Salary', dueDay: 28 }] }
           ],
           months: {}
         };
@@ -1639,11 +1789,13 @@
       let state = loadState();
       let selectedYear = now.getFullYear();
       let selectedMonth = now.getMonth(); // 0..11
+      let selectedDay = now.getDate();    // 1..31 for Home Calendar
       let pickerYear = selectedYear;
-      let activeTab = 'expenses';
+      let activeTab = 'home';
       let chartMode = 'donut'; // 'donut' | 'bar'
       let trendFocusMonth = selectedMonth;
       let localBlobUrl = null;
+      let localFileHandle = null;
       let confirmAction = null;
 
       /* -------------------------------------------------------------------
@@ -1721,10 +1873,22 @@
           items: sec.items.map(it => ({
             id: it.id,
             name: it.name,
+            dueDay: parseDueDay(it.dueDay),
             amount: 0,
             status: 'pending'
           }))
         }));
+      }
+
+      function parseDueDay(val) {
+        if (val === null || val === undefined || val === '') return null;
+        const n = parseInt(val, 10);
+        if (isNaN(n) || n < 1 || n > 31) return null;
+        return n;
+      }
+
+      function daysInMonth(y, m) {
+        return new Date(y, m + 1, 0).getDate();
       }
 
       function initMonthSheet(y, m, withBills = true) {
@@ -1797,6 +1961,12 @@
         else if (m > 11) { m = 0; y += 1; }
         selectedYear = y;
         selectedMonth = m;
+        const fresh = new Date();
+        if (y === fresh.getFullYear() && m === fresh.getMonth()) {
+          selectedDay = fresh.getDate();
+        } else {
+          selectedDay = Math.min(selectedDay, daysInMonth(y, m));
+        }
         trendFocusMonth = m;
         renderCurrentView();
       }
@@ -1891,101 +2061,216 @@
       }
 
       /* -------------------------------------------------------------------
-         TAB 1: EXPENSES + PURE INLINE SVG DONUT & VERTICAL BAR CHARTS
+         TAB 0: HOME VIEW — INTERACTIVE CALENDAR, DUE PANEL & INSIGHTS
          ------------------------------------------------------------------- */
-      function renderExpensesTab() {
+      function renderHomeTab() {
         const key = monthKey(selectedYear, selectedMonth);
         const md = state.months[key];
-        const budget = md ? (Number(md.budget) || 0) : (state.settings.defaultMonthlyBudget || 0);
-        const expenses = md && Array.isArray(md.expenses) ? md.expenses : [];
-        const spent = expenses.reduce((s, e) => s + (Number(e.amount) || 0), 0);
-        const remaining = budget - spent;
-        const pct = budget > 0 ? Math.round((spent / budget) * 100) : (spent > 0 ? 100 : 0);
+        const totalDays = daysInMonth(selectedYear, selectedMonth);
+        if (selectedDay > totalDays) selectedDay = totalDays;
+        if (selectedDay < 1) selectedDay = 1;
 
-        const remVal = document.getElementById('exp-remaining-val');
-        const remLbl = document.getElementById('exp-remaining-label');
-        const pctLbl = document.getElementById('exp-pct-label');
-        const fill = document.getElementById('exp-progress-fill');
+        const firstWeekday = new Date(selectedYear, selectedMonth, 1).getDay(); // 0=Sun..6=Sat
+        const today = new Date();
+        const isCurrentMonth = (selectedYear === today.getFullYear() && selectedMonth === today.getMonth());
+        const isPastMonth = (selectedYear < today.getFullYear()) || (selectedYear === today.getFullYear() && selectedMonth < today.getMonth());
+        const todayDate = today.getDate();
 
-        remVal.textContent = formatINR(Math.abs(remaining));
-        if (remaining < 0) {
-          remVal.className = 'big-stat text-coral';
-          remLbl.textContent = 'over budget this month';
-          remLbl.className = 'label-muted text-coral';
-          pctLbl.className = 'text-coral';
-          fill.className = 'progress-fill over';
-        } else {
-          remVal.className = 'big-stat';
-          remLbl.textContent = 'remaining this month';
-          remLbl.className = 'label-muted';
-          pctLbl.className = '';
-          fill.className = 'progress-fill';
+        // Map all bills with a valid dueDay to clamped calendar day (1..totalDays)
+        const dueByDay = {};
+        const pendingNonIncome = [];
+        if (md && Array.isArray(md.bills)) {
+          md.bills.forEach(sec => {
+            (sec.items || []).forEach(it => {
+              const d = parseDueDay(it.dueDay);
+              const clamped = d ? Math.min(d, totalDays) : null;
+              if (clamped) {
+                if (!dueByDay[clamped]) dueByDay[clamped] = [];
+                dueByDay[clamped].push({ secId: sec.id, secName: sec.name, secType: sec.type, item: it, clampedDay: clamped });
+              }
+              if (sec.type !== 'income' && it.status === 'pending') {
+                pendingNonIncome.push({ secName: sec.name, item: it, clampedDay: clamped });
+              }
+            });
+          });
         }
-        pctLbl.textContent = `${pct}%`;
-        fill.style.width = `${Math.min(100, Math.max(0, pct))}%`;
-        document.getElementById('exp-spent-val').textContent = formatINR(spent);
-        document.getElementById('exp-budget-val').textContent = formatINR(budget);
 
-        // Category breakdown
-        const totals = {};
-        expenses.forEach(e => {
-          totals[e.categoryId] = (totals[e.categoryId] || 0) + (Number(e.amount) || 0);
-        });
-        const breakdown = Object.entries(totals).map(([catId, amount]) => {
-          const cat = state.categories.find(c => c.id === catId) || { id: catId, name: 'Other', color: '#cbd5e1' };
-          return { ...cat, amount, pct: spent > 0 ? (amount / spent) * 100 : 0 };
-        }).sort((a, b) => b.amount - a.amount);
+        // Render 7-column calendar grid
+        const calGrid = document.getElementById('home-cal-grid');
+        let cellsHtml = '';
+        for (let b = 0; b < firstWeekday; b++) {
+          cellsHtml += `<div class="home-cal-cell blank"></div>`;
+        }
+        for (let day = 1; day <= totalDays; day++) {
+          const isToday = isCurrentMonth && day === todayDate;
+          const isSelected = day === selectedDay;
+          const dueList = dueByDay[day] || [];
 
-        const stage = document.getElementById('exp-chart-stage');
-        const legend = document.getElementById('exp-cat-legend');
+          const dotsHtml = dueList.slice(0, 3).map(entry => {
+            let dotClass = 'pending';
+            if (entry.item.status === 'paid') dotClass = 'paid';
+            else if (entry.item.status === 'skipped') dotClass = 'skipped';
+            else if (entry.secType === 'income') dotClass = 'income';
+            else if (isPastMonth || (isCurrentMonth && day < todayDate)) dotClass = 'overdue';
+            return `<span class="home-dot ${dotClass}"></span>`;
+          }).join('');
 
-        if (breakdown.length === 0) {
-          stage.innerHTML = `<div class="empty-msg">No expenses logged for ${MONTHS_SHORT[selectedMonth]} ${selectedYear}.<br/>Tap <strong>+ New Expense</strong> to add one.</div>`;
-          legend.innerHTML = '';
-        } else {
-          stage.innerHTML = chartMode === 'donut' ? buildDonutSvg(breakdown, spent) : buildVerticalBarSvg(breakdown);
-          legend.innerHTML = breakdown.map(b => `
-            <div class="cat-legend-item">
-              <div style="display:flex; align-items:center; gap:9px; min-width:0;">
-                <span class="cat-dot" style="background:${b.color};"></span>
-                <span style="font-size:0.86rem; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${esc(b.name)}</span>
-              </div>
-              <div style="text-align:right; flex-shrink:0;">
-                <span style="font-size:0.86rem; font-weight:700;">${formatINR(b.amount)}</span>
-                <span class="label-muted" style="margin-left:6px;">${b.pct.toFixed(1)}%</span>
+          cellsHtml += `
+            <button type="button" class="home-cal-cell${isToday ? ' today' : ''}${isSelected ? ' selected' : ''}" data-home-day="${day}" aria-label="${day} ${MONTHS_SHORT[selectedMonth]} ${selectedYear}">
+              <span>${day}</span>
+              <span class="home-cal-dots">${dotsHtml}</span>
+            </button>
+          `;
+        }
+        calGrid.innerHTML = cellsHtml;
+
+        // Render Selected Day Due Panel
+        const selectedDue = dueByDay[selectedDay] || [];
+        document.getElementById('home-selected-day-title').textContent =
+          `${selectedDay} ${MONTHS_SHORT[selectedMonth]} ${selectedYear} • ${selectedDue.length} DUE`;
+
+        const dueListEl = document.getElementById('home-due-list');
+        if (selectedDue.length === 0) {
+          dueListEl.innerHTML = `
+            <div class="empty-msg" style="padding:14px 8px;">
+              No bills due on this day.
+              <div style="margin-top:10px; display:flex; justify-content:center; gap:8px;">
+                <button type="button" class="btn-pill sm" data-home-shortcut="bills">+ Add Bill</button>
+                <button type="button" class="btn-pill sm primary" data-home-shortcut="expense">+ Add Expense</button>
               </div>
             </div>
-          `).join('');
-        }
-
-        // Recent Expenses List
-        document.getElementById('exp-count-badge').textContent = `${expenses.length} ${expenses.length === 1 ? 'entry' : 'entries'}`;
-        const listEl = document.getElementById('exp-list');
-        if (expenses.length === 0) {
-          listEl.innerHTML = `<div class="empty-msg" style="padding:12px;">No transactions recorded yet.</div>`;
+          `;
         } else {
-          const sorted = [...expenses].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
-          listEl.innerHTML = sorted.map(e => {
-            const cat = state.categories.find(c => c.id === e.categoryId) || { name: 'Other', color: '#ffffff' };
-            const dateStr = e.date ? new Date(e.date + 'T00:00:00').toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) : '';
+          dueListEl.innerHTML = selectedDue.map(entry => {
+            const it = entry.item;
+            const paidText = entry.secType === 'income' ? 'Received' : 'Paid';
+            const pillText = it.status === 'paid' ? paidText : (it.status === 'skipped' ? 'Skipped' : 'Pending');
             return `
-              <div class="glass-row expense-row">
-                <div class="expense-main">
-                  <span class="v-bar" style="background:${cat.color};"></span>
-                  <div style="min-width:0;">
-                    <div class="expense-title">${esc(cat.name)}${e.note ? ` · <span style="font-weight:400; color:rgba(248,250,252,0.7);">${esc(e.note)}</span>` : ''}</div>
-                    <div class="expense-sub">${dateStr}</div>
+              <div class="home-due-row">
+                <div style="min-width:0; flex:1;">
+                  <div style="display:flex; align-items:center; gap:6px; margin-bottom:2px;">
+                    <span class="type-badge ${entry.secType}">${esc(entry.secName)}</span>
+                  </div>
+                  <div style="font-size:0.9rem; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;${it.status === 'skipped' ? ' text-decoration:line-through; opacity:0.5;' : ''}">
+                    ${esc(it.name)}
                   </div>
                 </div>
-                <div class="expense-right">
-                  <span class="expense-amount">${formatINR(e.amount)}</span>
-                  <button type="button" class="icon-btn danger" data-del-exp="${e.id}" aria-label="Delete expense">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
-                  </button>
+                <div style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+                  <strong style="font-size:0.9rem;">${Number(it.amount) > 0 ? formatINR(it.amount) : '—'}</strong>
+                  <button type="button" class="status-pill ${it.status}" data-home-status="${entry.secId}::${it.id}">${pillText}</button>
                 </div>
               </div>
             `;
           }).join('');
+        }
+
+        // Show expenses logged on selected date if any
+        const selIso = `${selectedYear}-${String(selectedMonth + 1).padStart(2, '0')}-${String(selectedDay).padStart(2, '0')}`;
+        const dayExpenses = (md && Array.isArray(md.expenses) ? md.expenses : []).filter(e => e.date === selIso);
+        const dayExpWrap = document.getElementById('home-day-expenses-wrap');
+        const dayExpList = document.getElementById('home-day-expenses-list');
+        if (dayExpenses.length > 0) {
+          dayExpWrap.style.display = 'block';
+          dayExpList.innerHTML = dayExpenses.map(e => {
+            const cat = state.categories.find(c => c.id === e.categoryId) || { name: 'Other', color: '#cbd5e1' };
+            return `
+              <div class="glass-row" style="display:flex; align-items:center; justify-content:space-between; padding:8px 11px;">
+                <div style="display:flex; align-items:center; gap:8px; min-width:0;">
+                  <span class="cat-dot" style="background:${cat.color};"></span>
+                  <span style="font-size:0.82rem; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${esc(cat.name)}${e.note ? ` · ${esc(e.note)}` : ''}</span>
+                </div>
+                <strong style="font-size:0.84rem; flex-shrink:0;">${formatINR(e.amount)}</strong>
+              </div>
+            `;
+          }).join('');
+        } else {
+          dayExpWrap.style.display = 'none';
+          dayExpList.innerHTML = '';
+        }
+
+        // ---- BOTTOM INSIGHTS ----
+        const cf = computeCashflow(md);
+        const budget = md ? (Number(md.budget) || 0) : (state.settings.defaultMonthlyBudget || 0);
+        const spent = cf.dailyExpenses;
+        const remaining = budget - spent;
+        const pct = budget > 0 ? Math.round((spent / budget) * 100) : (spent > 0 ? 100 : 0);
+
+        // Insight 1: Monthly Budget Health
+        const insRemEl = document.getElementById('ins-budget-rem');
+        const insBarEl = document.getElementById('ins-budget-bar');
+        const insPctEl = document.getElementById('ins-budget-pct');
+        insRemEl.textContent = formatINR(Math.abs(remaining));
+        insRemEl.className = remaining < 0 ? 'text-coral' : '';
+        insPctEl.textContent = `${pct}%`;
+        insPctEl.className = remaining < 0 ? 'text-coral' : '';
+        document.getElementById('ins-budget-sub').textContent = remaining < 0
+          ? `over ${formatINR(budget)} budget`
+          : `remaining of ${formatINR(budget)}`;
+        insBarEl.style.width = `${Math.min(100, Math.max(0, pct))}%`;
+        insBarEl.className = `progress-fill${remaining < 0 ? ' over' : ''}`;
+
+        const safeEl = document.getElementById('ins-daily-safe');
+        const safeLbl = document.getElementById('ins-daily-safe-lbl');
+        if (isPastMonth) {
+          safeEl.textContent = `${formatINR(Math.round(spent / totalDays))}/day`;
+          safeEl.style.color = '#ffffff';
+          safeLbl.textContent = 'avg daily spend';
+        } else {
+          const remDays = isCurrentMonth ? Math.max(1, totalDays - todayDate + 1) : totalDays;
+          const safeAmt = remaining > 0 ? Math.floor(remaining / remDays) : 0;
+          safeEl.textContent = `${formatINR(safeAmt)}/day`;
+          safeEl.style.color = remaining < 0 ? 'var(--accent-coral)' : 'var(--accent-emerald)';
+          safeLbl.textContent = `${remDays}d left safe spend`;
+        }
+
+        // Insight 2: Upcoming & Pending Bills
+        const pendingTotal = pendingNonIncome.reduce((s, p) => s + (Number(p.item.amount) || 0), 0);
+        document.getElementById('ins-pending-count').textContent = `${pendingNonIncome.length} PENDING`;
+        document.getElementById('ins-pending-total').textContent = formatINR(pendingTotal);
+
+        const withDue = pendingNonIncome.filter(p => p.clampedDay !== null).sort((a, b) => a.clampedDay - b.clampedDay);
+        const nextNameEl = document.getElementById('ins-next-due-name');
+        const nextWhenEl = document.getElementById('ins-next-due-when');
+        if (withDue.length === 0) {
+          nextNameEl.textContent = pendingNonIncome.length ? `${pendingNonIncome[0].item.name}` : 'All settled';
+          nextWhenEl.textContent = pendingNonIncome.length ? 'No due date set' : 'No pending bills';
+        } else {
+          const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+          let target = withDue.find(p => new Date(selectedYear, selectedMonth, p.clampedDay) >= todayStart) || withDue[0];
+          const targetDate = new Date(selectedYear, selectedMonth, target.clampedDay);
+          const diffDays = Math.round((targetDate - todayStart) / 86400000);
+          nextNameEl.textContent = `Next: ${target.item.name}`;
+          if (diffDays === 0) nextWhenEl.textContent = `Due today (${target.clampedDay} ${MONTHS_SHORT[selectedMonth]})`;
+          else if (diffDays === 1) nextWhenEl.textContent = `Due tomorrow (${target.clampedDay} ${MONTHS_SHORT[selectedMonth]})`;
+          else if (diffDays > 1) nextWhenEl.textContent = `In ${diffDays} days (${target.clampedDay} ${MONTHS_SHORT[selectedMonth]})`;
+          else nextWhenEl.textContent = `${Math.abs(diffDays)}d overdue (${target.clampedDay} ${MONTHS_SHORT[selectedMonth]})`;
+        }
+
+        // Insight 3: Cashflow & Savings Snapshot
+        const saveRate = cf.income > 0 ? Math.round((cf.saving / cf.income) * 100) : 0;
+        const insNetEl = document.getElementById('ins-cf-net');
+        insNetEl.textContent = formatINR(cf.net);
+        insNetEl.className = cf.net < 0 ? 'text-coral' : 'text-emerald';
+        document.getElementById('ins-cf-save-rate').textContent = `${saveRate}% saved`;
+        document.getElementById('ins-cf-in').textContent = formatCompactINR(cf.income);
+        document.getElementById('ins-cf-out').textContent = formatCompactINR(cf.totalOutflow);
+
+        // Insight 4: Top Spending Category
+        const catTotals = {};
+        (md && Array.isArray(md.expenses) ? md.expenses : []).forEach(e => {
+          catTotals[e.categoryId] = (catTotals[e.categoryId] || 0) + (Number(e.amount) || 0);
+        });
+        const topEntry = Object.entries(catTotals).sort((a, b) => b[1] - a[1])[0];
+        if (topEntry && spent > 0) {
+          const cat = state.categories.find(c => c.id === topEntry[0]) || { name: 'Other' };
+          const share = Math.round((topEntry[1] / spent) * 100);
+          document.getElementById('ins-top-cat-name').textContent = cat.name;
+          document.getElementById('ins-top-cat-amt').textContent = formatINR(topEntry[1]);
+          document.getElementById('ins-top-cat-pct').textContent = `${share}% of monthly spend`;
+        } else {
+          document.getElementById('ins-top-cat-name').textContent = '—';
+          document.getElementById('ins-top-cat-amt').textContent = '₹0';
+          document.getElementById('ins-top-cat-pct').textContent = 'No expenses yet';
         }
       }
 
@@ -2096,10 +2381,20 @@
 
           const itemsHtml = (sec.items || []).map(it => {
             const pillText = it.status === 'paid' ? paidText : (it.status === 'skipped' ? 'Skipped' : 'Pending');
+            const dueVal = parseDueDay(it.dueDay);
             return `
               <div class="bill-row">
                 <div class="bill-name${it.status === 'skipped' ? ' skipped' : ''}">${esc(it.name)}</div>
                 <div class="bill-controls">
+                  <div class="due-day-wrap" title="Due Day of Month (1-31)">
+                    <span class="due-day-prefix">D</span>
+                    <input type="number" min="1" max="31"
+                      class="due-day-input"
+                      data-bill-due="${sec.id}::${it.id}"
+                      value="${dueVal ? dueVal : ''}"
+                      placeholder="—"
+                      aria-label="${esc(it.name)} due day" />
+                  </div>
                   <div class="bill-amt-wrap">
                     <span class="rupee-prefix">₹</span>
                     <input type="number" step="0.01" min="0"
@@ -2466,7 +2761,8 @@
 
       function renderCurrentView() {
         renderHeader();
-        if (activeTab === 'expenses') renderExpensesTab();
+        if (activeTab === 'home') renderHomeTab();
+        else if (activeTab === 'expenses') renderExpensesTab();
         else if (activeTab === 'bills') renderBillsTab();
         else if (activeTab === 'overview') {
           trendFocusMonth = selectedMonth;
@@ -2510,6 +2806,7 @@
           const fresh = new Date();
           selectedYear = fresh.getFullYear();
           selectedMonth = fresh.getMonth();
+          selectedDay = fresh.getDate();
           trendFocusMonth = selectedMonth;
           runAutoRolloverCheck();
           renderCurrentView();
@@ -2539,9 +2836,54 @@
           if (!cell) return;
           selectedYear = pickerYear;
           selectedMonth = Number(cell.dataset.pickMonth);
+          const fresh = new Date();
+          if (selectedYear === fresh.getFullYear() && selectedMonth === fresh.getMonth()) {
+            selectedDay = fresh.getDate();
+          } else {
+            selectedDay = Math.min(selectedDay, daysInMonth(selectedYear, selectedMonth));
+          }
           trendFocusMonth = selectedMonth;
           closeModals();
           renderCurrentView();
+        });
+
+        // Home View: Tap Calendar Day
+        document.getElementById('home-cal-grid').addEventListener('click', e => {
+          const cell = e.target.closest('[data-home-day]');
+          if (!cell) return;
+          selectedDay = Number(cell.dataset.homeDay);
+          renderHomeTab();
+        });
+
+        // Home View: Tap Status Pill or Quick Shortcuts
+        document.getElementById('home-due-list').addEventListener('click', e => {
+          const statusBtn = e.target.closest('[data-home-status]');
+          if (statusBtn) {
+            const [secId, itemId] = statusBtn.dataset.homeStatus.split('::');
+            const md = state.months[monthKey(selectedYear, selectedMonth)];
+            const sec = (md?.bills || []).find(s => s.id === secId);
+            const it = sec?.items.find(i => i.id === itemId);
+            if (it) {
+              const cycle = ['pending', 'paid', 'skipped'];
+              it.status = cycle[(cycle.indexOf(it.status) + 1) % cycle.length];
+              saveState();
+              renderHomeTab();
+            }
+            return;
+          }
+          const sc = e.target.closest('[data-home-shortcut]');
+          if (sc) {
+            if (sc.dataset.homeShortcut === 'bills') {
+              switchTab('bills');
+            } else if (sc.dataset.homeShortcut === 'expense') {
+              openNewExpenseModalForDay(selectedDay);
+            }
+          }
+        });
+
+        // Home View: Quick "+ Expense" button on Selected Day
+        document.getElementById('btn-home-add-exp').addEventListener('click', () => {
+          openNewExpenseModalForDay(selectedDay);
         });
 
         // Modal Close
@@ -2577,15 +2919,20 @@
         });
 
         // Expenses: New Expense
-        document.getElementById('btn-new-expense').addEventListener('click', () => {
+        function openNewExpenseModalForDay(dayNum) {
           document.getElementById('inp-exp-cat').innerHTML = state.categories
             .map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('');
-          const d = (selectedYear === now.getFullYear() && selectedMonth === now.getMonth()) ? now.getDate() : 1;
-          document.getElementById('inp-exp-date').value = `${selectedYear}-${String(selectedMonth + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+          const clamped = Math.min(Math.max(1, dayNum || 1), daysInMonth(selectedYear, selectedMonth));
+          document.getElementById('inp-exp-date').value = `${selectedYear}-${String(selectedMonth + 1).padStart(2, '0')}-${String(clamped).padStart(2, '0')}`;
           document.getElementById('inp-exp-amount').value = '';
           document.getElementById('inp-exp-note').value = '';
           openModal('modal-expense');
           setTimeout(() => document.getElementById('inp-exp-amount').focus(), 60);
+        }
+
+        document.getElementById('btn-new-expense').addEventListener('click', () => {
+          const d = (selectedYear === now.getFullYear() && selectedMonth === now.getMonth()) ? now.getDate() : 1;
+          openNewExpenseModalForDay(d);
         });
         document.getElementById('form-expense').addEventListener('submit', e => {
           e.preventDefault();
@@ -2604,7 +2951,7 @@
           bucket.expenses.push({ id: uid('exp'), categoryId, amount, date, note });
           saveState();
           closeModals();
-          renderExpensesTab();
+          renderCurrentView();
           showToast(`Logged ${formatINR(amount)}`);
         });
 
@@ -2662,34 +3009,35 @@
         document.getElementById('categories-list').addEventListener('click', e => {
           const btn = e.target.closest('[data-del-cat]');
           if (!btn) return;
-          if (state.categories.length <= 1) {
-            showToast('At least one category is required.', true);
-            return;
-          }
-          const catId = btn.dataset.delCat;
-          const cat = state.categories.find(c => c.id === catId);
-          askConfirm({
-            title: `Delete ${cat ? cat.name : 'Category'}?`,
-            message: 'Existing expenses in this category will remain logged under "Other".',
-            onConfirm: () => {
-              state.categories = state.categories.filter(c => c.id !== catId);
-              saveState();
-              renderExpensesTab();
-              showToast('Category deleted');
-            }
-          });
-        });
-
-        // Bills: Initialize Blank Sheet
-        document.getElementById('btn-init-bills-month').addEventListener('click', () => {
-          initMonthSheet(selectedYear, selectedMonth, true);
-          renderBillsTab();
-          showToast(`Blank sheet created for ${MONTHS_SHORT[selectedMonth]} ${selectedYear}`);
-        });
-
-        // Bills: Inline Amount Input
+        // Bills: Inline Amount & Due Day Input
         const billsList = document.getElementById('bills-sections-list');
         billsList.addEventListener('input', e => {
+          const dueInp = e.target.closest('[data-bill-due]');
+          if (dueInp) {
+            const [secId, itemId] = dueInp.dataset.billDue.split('::');
+            const md = state.months[monthKey(selectedYear, selectedMonth)];
+            const sec = (md?.bills || []).find(s => s.id === secId);
+            const it = sec?.items.find(i => i.id === itemId);
+            if (!it) return;
+            const rawVal = dueInp.value.trim();
+            if (rawVal === '') {
+              it.dueDay = null;
+            } else {
+              let parsed = parseInt(rawVal, 10);
+              if (!isNaN(parsed)) {
+                if (parsed > 31) { parsed = 31; dueInp.value = '31'; }
+                if (parsed < 1) { parsed = 1; dueInp.value = '1'; }
+                it.dueDay = parsed;
+              }
+            }
+            // Auto-sync dueDay to master template for matching item so future months inherit it
+            const tmplSec = state.billTemplate.find(s => s.id === secId);
+            const tmplIt = tmplSec?.items.find(i => i.id === itemId);
+            if (tmplIt) tmplIt.dueDay = it.dueDay;
+            saveState();
+            return;
+          }
+
           const inp = e.target.closest('[data-bill-amt]');
           if (!inp) return;
           const [secId, itemId] = inp.dataset.billAmt.split('::');
@@ -2735,6 +3083,7 @@
               document.getElementById('inp-item-sec-id').value = secId;
               document.getElementById('add-item-sec-name').textContent = sec.name;
               document.getElementById('inp-item-name').value = '';
+              document.getElementById('inp-item-due-day').value = '';
               document.getElementById('inp-item-template').checked = true;
               openModal('modal-add-item');
               setTimeout(() => document.getElementById('inp-item-name').focus(), 60);
@@ -2821,15 +3170,16 @@
           e.preventDefault();
           const secId = document.getElementById('inp-item-sec-id').value;
           const name = document.getElementById('inp-item-name').value.trim();
+          const dueDay = parseDueDay(document.getElementById('inp-item-due-day').value);
           const addToTemplate = document.getElementById('inp-item-template').checked;
           if (!name) return;
           const id = uid('item');
           const md = state.months[monthKey(selectedYear, selectedMonth)];
           const sec = (md?.bills || []).find(s => s.id === secId);
-          if (sec) sec.items.push({ id, name, amount: 0, status: 'pending' });
+          if (sec) sec.items.push({ id, name, dueDay, amount: 0, status: 'pending' });
           if (addToTemplate) {
             const tmplSec = state.billTemplate.find(s => s.id === secId);
-            if (tmplSec) tmplSec.items.push({ id, name });
+            if (tmplSec) tmplSec.items.push({ id, name, dueDay });
           }
           saveState();
           closeModals();
@@ -2856,29 +3206,30 @@
           const srcKey = monthKey(srcY, srcM);
           const dstKey = monthKey(dstY, dstM);
           const srcLabel = `${MONTHS_SHORT[srcM]} ${srcY}`;
-          const dstLabel = `${MONTHS_SHORT[dstM]} ${dstY}`;
-
-          if (srcKey === dstKey) {
-            showToast('Source and target months must be different.', true);
-            return;
+        // Vault: Exports, Import, Save/Sync Local File, Rollover, Reset
+        document.getElementById('btn-save-sync-file').addEventListener('click', async () => {
+          const payload = JSON.stringify(state, null, 2);
+          try {
+            if (window.showSaveFilePicker) {
+              if (!localFileHandle) {
+                localFileHandle = await window.showSaveFilePicker({
+                  suggestedName: 'kosah_vault.json',
+                  types: [{ description: 'Kosah JSON Vault', accept: { 'application/json': ['.json'] } }]
+                });
+              }
+              const writable = await localFileHandle.createWritable();
+              await writable.write(payload);
+              await writable.close();
+              showToast('Synced to local JSON file');
+              return;
+            }
+          } catch (err) {
+            if (err && err.name === 'AbortError') return;
           }
-          if (!state.months[srcKey]) {
-            showToast(`No data found in ${srcLabel} to move.`, true);
-            return;
-          }
-
-          const dstHasData = monthHasMeaningfulData(state.months[dstKey]);
-          askConfirm({
-            title: dstHasData ? `Overwrite ${dstLabel}?` : `Move ${srcLabel} → ${dstLabel}?`,
-            message: dstHasData
-              ? `${dstLabel} already has saved data. Moving ${srcLabel} into ${dstLabel} will overwrite all existing budget, expenses, and bills in ${dstLabel}, and clear ${srcLabel}.`
-              : `Move all budget, expenses, and bills from ${srcLabel} to ${dstLabel}? ${srcLabel} will be cleared afterward.`,
-            confirmLabel: dstHasData ? 'Overwrite & Move' : 'Move Data',
-            onConfirm: () => executeMoveMonthData(srcY, srcM, dstY, dstM)
-          });
+          downloadFile(payload, `kosah_vault_${now.toISOString().slice(0, 10)}.json`, 'application/json');
+          showToast('Saved local JSON file');
         });
 
-        // Vault: Exports, Import, Rollover, Reset
         document.getElementById('btn-export-csv').addEventListener('click', exportCsv);
         document.getElementById('btn-export-txt').addEventListener('click', exportTxt);
         document.getElementById('btn-export-json').addEventListener('click', () => {
