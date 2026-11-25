@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <meta name="theme-color" content="#1c232d" />
+  <meta name="theme-color" content="#1c2026" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Kosah" />
@@ -14,31 +14,32 @@
 
   <style>
     /* =========================================================================
-       KOSAH — iOS FROSTED-GLASS DARK-SLATE WIDGET DESIGN SYSTEM (ZERO CDN)
+       KOSAH — iOS DARK-SLATE FROSTED-GLASS WIDGET DESIGN SYSTEM (ZERO CDN)
        ========================================================================= */
     :root {
-      --glass-bg: rgba(255, 255, 255, 0.11);
-      --glass-bg-elevated: rgba(255, 255, 255, 0.16);
-      --glass-bg-row: rgba(255, 255, 255, 0.08);
-      --glass-border: rgba(255, 255, 255, 0.24);
-      --glass-border-subtle: rgba(255, 255, 255, 0.14);
-      --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.28);
-      --glass-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+      --glass-bg: rgba(28, 32, 38, 0.58);
+      --glass-bg-elevated: rgba(34, 40, 48, 0.72);
+      --glass-bg-row: rgba(255, 255, 255, 0.06);
+      --glass-border: rgba(255, 255, 255, 0.14);
+      --glass-border-strong: rgba(255, 255, 255, 0.22);
+      --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+      --glass-shadow: 0 18px 42px rgba(0, 0, 0, 0.34);
 
-      --text-primary: #ffffff;
-      --text-secondary: rgba(255, 255, 255, 0.62);
-      --text-muted: rgba(255, 255, 255, 0.44);
+      --text-primary: #f8fafc;
+      --text-secondary: rgba(226, 232, 240, 0.64);
+      --text-muted: rgba(203, 213, 225, 0.44);
 
       --accent-white: #ffffff;
+      --accent-gold: #e8c97e;
       --accent-coral: #ff7b72;
       --accent-amber: #f5c542;
       --accent-emerald: #4ade80;
 
-      --radius-card: 26px;
-      --radius-row: 18px;
+      --radius-card: 22px;
+      --radius-row: 16px;
       --radius-pill: 9999px;
 
-      --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, system-ui, sans-serif;
     }
 
     * {
@@ -52,53 +53,53 @@
       min-height: 100%;
       font-family: var(--font-sans);
       color: var(--text-primary);
-      background-color: #161d26;
+      background-color: #14181f;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Moody Dusk/Slate Blurred Ambient Backdrop */
+    /* Deep Dusk / Slate Blurred Ambient Backdrop */
     .ambient-backdrop {
       position: fixed;
       inset: 0;
       z-index: 0;
       pointer-events: none;
       background:
-        radial-gradient(ellipse 90% 60% at 85% 12%, rgba(122, 146, 175, 0.45) 0%, transparent 62%),
-        radial-gradient(ellipse 80% 55% at 15% 24%, rgba(168, 126, 98, 0.34) 0%, transparent 58%),
-        radial-gradient(ellipse 95% 65% at 50% 92%, rgba(44, 56, 74, 0.85) 0%, transparent 65%),
-        linear-gradient(160deg, #25303f 0%, #2e3742 35%, #232a34 68%, #151b23 100%);
+        radial-gradient(ellipse 90% 60% at 86% 10%, rgba(112, 138, 170, 0.42) 0%, transparent 62%),
+        radial-gradient(ellipse 78% 54% at 14% 22%, rgba(176, 132, 98, 0.30) 0%, transparent 58%),
+        radial-gradient(ellipse 95% 65% at 50% 94%, rgba(36, 46, 62, 0.88) 0%, transparent 66%),
+        linear-gradient(162deg, #222a36 0%, #2a323d 34%, #1e242d 68%, #13171e 100%);
     }
 
     .ambient-orb {
       position: absolute;
       border-radius: 50%;
-      filter: blur(75px);
-      opacity: 0.48;
+      filter: blur(78px);
+      opacity: 0.46;
     }
-    .orb-twilight {
+    .orb-dusk {
       width: 340px;
       height: 340px;
-      top: 12%;
+      top: 10%;
       left: -100px;
-      background: radial-gradient(circle, rgba(214, 154, 108, 0.55), transparent 70%);
+      background: radial-gradient(circle, rgba(212, 162, 114, 0.52), transparent 70%);
     }
     .orb-slate {
       width: 380px;
       height: 380px;
-      top: -80px;
+      top: -90px;
       right: -110px;
-      background: radial-gradient(circle, rgba(132, 162, 198, 0.55), transparent 70%);
+      background: radial-gradient(circle, rgba(124, 154, 192, 0.52), transparent 70%);
     }
-    .orb-deep {
-      width: 320px;
-      height: 320px;
+    .orb-warm {
+      width: 300px;
+      height: 300px;
       bottom: 8%;
-      right: -80px;
-      background: radial-gradient(circle, rgba(182, 142, 114, 0.32), transparent 70%);
+      right: -70px;
+      background: radial-gradient(circle, rgba(186, 152, 112, 0.28), transparent 70%);
     }
 
-    /* Main Responsive App Shell */
+    /* Responsive App Shell */
     .app-shell {
       position: relative;
       z-index: 1;
@@ -108,7 +109,7 @@
       padding: calc(14px + env(safe-area-inset-top, 0px)) 16px calc(104px + env(safe-area-inset-bottom, 0px));
     }
 
-    /* Core Frosted Glass Surface */
+    /* Frosted Glass Card */
     .glass-card {
       background: var(--glass-bg);
       backdrop-filter: blur(26px) saturate(140%);
@@ -121,12 +122,12 @@
 
     .glass-row {
       background: var(--glass-bg-row);
-      border: 1px solid var(--glass-border-subtle);
+      border: 1px solid rgba(255, 255, 255, 0.10);
       border-radius: var(--radius-row);
       padding: 12px 14px;
     }
 
-    /* Signature Vertical White Accent Bar */
+    /* Signature Vertical White Accent Bar (|) */
     .accent-bar-wrap {
       display: flex;
       align-items: center;
@@ -141,12 +142,14 @@
       background: var(--accent-white);
       flex-shrink: 0;
     }
+    .v-bar.gold { background: var(--accent-gold); }
     .v-bar.coral { background: var(--accent-coral); }
     .v-bar.amber { background: var(--accent-amber); }
     .v-bar.emerald { background: var(--accent-emerald); }
 
     /* =========================================================================
-       HEADER (TOP BAR)
+       HEADER: LARGE "KOSAH" (TAP = CURRENT MONTH) + COMPACT MONTH/YEAR CONTROL
+       WITH INVISIBLE LIMITED-WIDTH LEFT/RIGHT TAP ZONES
        ========================================================================= */
     .app-header {
       position: sticky;
@@ -155,49 +158,76 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      padding: 12px 16px;
+      gap: 8px;
+      padding: 10px 10px 10px 18px;
       margin-bottom: 16px;
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(28px) saturate(150%);
-      -webkit-backdrop-filter: blur(28px) saturate(150%);
+      background: rgba(28, 32, 38, 0.66);
+      backdrop-filter: blur(26px) saturate(150%);
+      -webkit-backdrop-filter: blur(26px) saturate(150%);
       border: 1px solid var(--glass-border);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.24), var(--glass-highlight);
-      border-radius: 24px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28), var(--glass-highlight);
+      border-radius: var(--radius-card);
     }
 
-    .brand-title {
+    /* Tappable Brand Title (No subtitle, no refresh button) */
+    .brand-title-btn {
+      appearance: none;
+      background: transparent;
+      border: none;
+      padding: 4px 2px;
+      font-family: inherit;
       font-size: 1.9rem;
       font-weight: 800;
       letter-spacing: 0.08em;
       color: var(--text-primary);
       line-height: 1;
+      cursor: pointer;
       user-select: none;
+      transition: opacity 0.14s ease, transform 0.14s ease;
+    }
+    .brand-title-btn:active {
+      opacity: 0.65;
+      transform: scale(0.96);
     }
 
-    .header-controls {
-      display: flex;
+    /* Compact Month/Year Group with Strictly Limited-Width Invisible Flanking Zones */
+    .month-nav-group {
+      display: inline-flex;
       align-items: center;
-      gap: 8px;
       flex-shrink: 0;
     }
 
-    /* Tappable Month & Year Pill: | NOV 2026 */
+    /* Invisible Left/Right Tap Zones (32px wide, no icons, no borders, no arrows) */
+    .invisible-nav-zone {
+      appearance: none;
+      width: 32px;
+      height: 40px;
+      background: transparent;
+      border: none;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      flex-shrink: 0;
+      outline: none;
+    }
+
+    /* Center Month & Year Tappable Pill: | NOV 2026 */
     .month-pill-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 9px 14px 9px 11px;
       border-radius: var(--radius-pill);
-      background: rgba(255, 255, 255, 0.13);
-      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.16);
       color: var(--text-primary);
       cursor: pointer;
-      transition: background 0.18s ease, transform 0.15s ease;
+      transition: background 0.16s ease, transform 0.14s ease;
+      flex-shrink: 0;
     }
     .month-pill-btn:active {
       transform: scale(0.96);
-      background: rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.18);
     }
     .month-pill-bar {
       width: 3px;
@@ -210,6 +240,7 @@
       letter-spacing: 0.04em;
       text-transform: uppercase;
       line-height: 1;
+      white-space: nowrap;
     }
     .month-pill-text .m-bold {
       font-weight: 800;
@@ -217,27 +248,8 @@
     }
     .month-pill-text .y-thin {
       font-weight: 300;
-      color: rgba(255, 255, 255, 0.72);
+      color: rgba(226, 232, 240, 0.72);
       margin-left: 4px;
-    }
-
-    /* Circular Refresh Icon Button */
-    .icon-circle-btn {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.13);
-      border: 1px solid rgba(255, 255, 255, 0.24);
-      color: #ffffff;
-      cursor: pointer;
-      transition: background 0.18s ease, transform 0.25s ease;
-    }
-    .icon-circle-btn:active {
-      transform: scale(0.92) rotate(120deg);
-      background: rgba(255, 255, 255, 0.24);
     }
 
     /* =========================================================================
@@ -251,7 +263,7 @@
 
     .tab-panel {
       display: none;
-      animation: fadeSlideUp 0.22s ease-out;
+      animation: fadeSlideUp 0.2s ease-out;
     }
     .tab-panel.active {
       display: flex;
@@ -260,7 +272,7 @@
     }
 
     @keyframes fadeSlideUp {
-      from { opacity: 0; transform: translateY(8px); }
+      from { opacity: 0; transform: translateY(7px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -273,9 +285,9 @@
     }
 
     .card-title {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 700;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       color: var(--text-primary);
     }
@@ -299,6 +311,7 @@
       color: var(--text-primary);
     }
 
+    .text-gold { color: var(--accent-gold) !important; }
     .text-coral { color: var(--accent-coral) !important; }
     .text-amber { color: var(--accent-amber) !important; }
     .text-emerald { color: var(--accent-emerald) !important; }
@@ -309,40 +322,45 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      padding: 9px 16px;
+      padding: 10px 16px;
       border-radius: var(--radius-pill);
       font-family: inherit;
       font-size: 0.82rem;
       font-weight: 700;
-      border: 1px solid rgba(255, 255, 255, 0.24);
-      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid var(--glass-border-strong);
+      background: rgba(255, 255, 255, 0.10);
       color: #ffffff;
       cursor: pointer;
-      transition: all 0.16s ease;
+      transition: all 0.15s ease;
       text-decoration: none;
     }
     .btn-pill:active { transform: scale(0.96); }
     .btn-pill.primary {
       background: #ffffff;
-      color: #161d26;
+      color: #14181f;
       border-color: #ffffff;
     }
     .btn-pill.primary:active {
       background: rgba(255, 255, 255, 0.85);
     }
+    .btn-pill.gold {
+      background: rgba(232, 201, 126, 0.18);
+      border-color: rgba(232, 201, 126, 0.45);
+      color: var(--accent-gold);
+    }
     .btn-pill.danger {
-      background: rgba(255, 123, 114, 0.16);
-      border-color: rgba(255, 123, 114, 0.42);
+      background: rgba(255, 123, 114, 0.14);
+      border-color: rgba(255, 123, 114, 0.40);
       color: var(--accent-coral);
     }
     .btn-pill.sm {
       padding: 6px 12px;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
     }
     .btn-pill.full {
       width: 100%;
       padding: 12px 16px;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
     }
 
     .icon-btn {
@@ -353,14 +371,14 @@
       align-items: center;
       justify-content: center;
       border: 1px solid transparent;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.07);
       color: var(--text-secondary);
       cursor: pointer;
       transition: all 0.15s ease;
       flex-shrink: 0;
     }
     .icon-btn:hover, .icon-btn:active {
-      background: rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.16);
       color: #ffffff;
     }
     .icon-btn.danger:hover, .icon-btn.danger:active {
@@ -368,28 +386,28 @@
       color: var(--accent-coral);
     }
 
-    /* Frosted Inputs */
+    /* Frosted Inputs & Selects */
     .glass-input, .glass-select {
       width: 100%;
       font-family: inherit;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       color: #ffffff;
-      background: rgba(0, 0, 0, 0.26);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(0, 0, 0, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: 14px;
-      padding: 11px 14px;
+      padding: 10px 13px;
       outline: none;
-      transition: border-color 0.18s ease, background 0.18s ease;
+      transition: border-color 0.16s ease, background 0.16s ease;
     }
     .glass-input::placeholder {
-      color: rgba(255, 255, 255, 0.38);
+      color: rgba(255, 255, 255, 0.36);
     }
     .glass-input:focus, .glass-select:focus {
-      border-color: rgba(255, 255, 255, 0.7);
-      background: rgba(0, 0, 0, 0.38);
+      border-color: rgba(255, 255, 255, 0.65);
+      background: rgba(0, 0, 0, 0.42);
     }
     .glass-select option {
-      background: #1f2732;
+      background: #1c2026;
       color: #ffffff;
     }
 
@@ -405,7 +423,7 @@
       width: 100%;
       height: 8px;
       border-radius: 99px;
-      background: rgba(0, 0, 0, 0.32);
+      background: rgba(0, 0, 0, 0.36);
       overflow: hidden;
       margin: 12px 0;
     }
@@ -424,8 +442,8 @@
       display: inline-flex;
       padding: 3px;
       border-radius: var(--radius-pill);
-      background: rgba(0, 0, 0, 0.26);
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(0, 0, 0, 0.30);
+      border: 1px solid rgba(255, 255, 255, 0.14);
     }
     .segmented-toggle button {
       border: none;
@@ -437,14 +455,14 @@
       padding: 5px 12px;
       border-radius: var(--radius-pill);
       cursor: pointer;
-      transition: all 0.16s ease;
+      transition: all 0.15s ease;
     }
     .segmented-toggle button.active {
       background: #ffffff;
-      color: #161d26;
+      color: #14181f;
     }
 
-    /* Grids */
+    /* Responsive Grids */
     .grid-2 {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -457,7 +475,7 @@
     }
 
     /* =========================================================================
-       TAB 1: EXPENSES SPECIFIC
+       TAB 1: EXPENSES & CHARTS
        ========================================================================= */
     .budget-top-row {
       display: flex;
@@ -486,6 +504,21 @@
       padding: 6px 0 4px;
     }
 
+    /* Horizontally scrollable wrapper for vertical bar chart when many categories */
+    .vbar-scroll-wrap {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 4px;
+    }
+    .vbar-scroll-wrap::-webkit-scrollbar {
+      height: 4px;
+    }
+    .vbar-scroll-wrap::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.22);
+      border-radius: 99px;
+    }
+
     .cat-legend-list {
       width: 100%;
       display: flex;
@@ -493,7 +526,6 @@
       gap: 8px;
       margin-top: 14px;
     }
-
     .cat-legend-item {
       display: flex;
       align-items: center;
@@ -501,8 +533,8 @@
       gap: 10px;
       padding: 9px 12px;
       border-radius: 14px;
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.09);
     }
     .cat-dot {
       width: 10px;
@@ -544,22 +576,22 @@
       flex-shrink: 0;
     }
     .expense-amount {
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       font-weight: 700;
       color: #ffffff;
     }
 
     /* =========================================================================
-       TAB 2: BILLS & CASHFLOW SPECIFIC
+       TAB 2: BILLS & CASHFLOW
        ========================================================================= */
     .summary-tile {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      border-radius: 16px;
       padding: 12px;
     }
     .summary-tile .val {
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       font-weight: 700;
       margin-top: 4px;
       white-space: nowrap;
@@ -568,18 +600,18 @@
     }
 
     .type-badge {
-      font-size: 0.64rem;
+      font-size: 0.62rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       padding: 3px 8px;
       border-radius: var(--radius-pill);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       color: var(--text-secondary);
     }
-    .type-badge.income { color: var(--accent-emerald); border-color: rgba(74, 222, 128, 0.35); background: rgba(74, 222, 128, 0.1); }
-    .type-badge.saving { color: var(--accent-amber); border-color: rgba(245, 197, 66, 0.35); background: rgba(245, 197, 66, 0.1); }
-    .type-badge.expense { color: rgba(255, 255, 255, 0.78); background: rgba(255, 255, 255, 0.08); }
+    .type-badge.income { color: var(--accent-emerald); border-color: rgba(74, 222, 128, 0.35); background: rgba(74, 222, 128, 0.10); }
+    .type-badge.saving { color: var(--accent-gold); border-color: rgba(232, 201, 126, 0.35); background: rgba(232, 201, 126, 0.10); }
+    .type-badge.expense { color: rgba(255, 255, 255, 0.78); background: rgba(255, 255, 255, 0.07); }
 
     .bill-row {
       display: flex;
@@ -588,23 +620,23 @@
       justify-content: space-between;
       gap: 8px;
       padding: 10px 12px;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.10);
     }
     .bill-name {
       font-size: 0.9rem;
       font-weight: 600;
       color: #ffffff;
-      flex: 1 1 95px;
-      min-width: 80px;
+      flex: 1 1 92px;
+      min-width: 78px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
     .bill-name.skipped {
       text-decoration: line-through;
-      opacity: 0.5;
+      opacity: 0.48;
     }
     .bill-controls {
       display: flex;
@@ -614,7 +646,7 @@
     }
     .bill-amt-wrap {
       position: relative;
-      width: 104px;
+      width: 102px;
     }
     .bill-amt-wrap .rupee-prefix {
       position: absolute;
@@ -632,19 +664,19 @@
       font-weight: 700;
       text-align: right;
       color: #ffffff;
-      background: rgba(0, 0, 0, 0.26);
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(0, 0, 0, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.16);
       border-radius: 11px;
       padding: 7px 9px 7px 22px;
       outline: none;
     }
     .bill-amt-input:focus {
       border-color: rgba(255, 255, 255, 0.65);
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.44);
     }
 
     .status-pill {
-      min-width: 76px;
+      min-width: 74px;
       padding: 7px 10px;
       border-radius: var(--radius-pill);
       font-family: inherit;
@@ -657,18 +689,18 @@
     }
     .status-pill:active { transform: scale(0.94); }
     .status-pill.pending {
-      background: rgba(245, 197, 66, 0.16);
-      border-color: rgba(245, 197, 66, 0.42);
+      background: rgba(245, 197, 66, 0.15);
+      border-color: rgba(245, 197, 66, 0.40);
       color: var(--accent-amber);
     }
     .status-pill.paid {
-      background: rgba(74, 222, 128, 0.16);
-      border-color: rgba(74, 222, 128, 0.42);
+      background: rgba(74, 222, 128, 0.15);
+      border-color: rgba(74, 222, 128, 0.40);
       color: var(--accent-emerald);
     }
     .status-pill.skipped {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(255, 255, 255, 0.18);
       color: var(--text-muted);
       text-decoration: line-through;
     }
@@ -682,9 +714,9 @@
       justify-content: space-between;
       gap: 10px;
       padding: 10px 14px;
-      border-radius: 16px;
-      background: rgba(0, 0, 0, 0.24);
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 15px;
+      background: rgba(0, 0, 0, 0.26);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       margin-bottom: 10px;
       font-size: 0.8rem;
     }
@@ -698,8 +730,8 @@
     .trend-month-btn {
       padding: 6px 2px;
       border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      background: rgba(255, 255, 255, 0.05);
       color: var(--text-secondary);
       font-family: inherit;
       font-size: 0.7rem;
@@ -709,31 +741,46 @@
     }
     .trend-month-btn.active {
       background: #ffffff;
-      color: #161d26;
+      color: #14181f;
       border-color: #ffffff;
       font-weight: 800;
     }
 
     /* =========================================================================
-       TAB 4: VAULT & SWITCHES
+       TAB 4: VAULT, MOVE MONTH DATA & SWITCHES
        ========================================================================= */
     .kv-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 8px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       font-size: 0.82rem;
     }
     .kv-row:last-child { border-bottom: none; }
+
+    .move-picker-box {
+      background: rgba(0, 0, 0, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      border-radius: 16px;
+      padding: 12px;
+    }
+    .move-picker-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+    }
 
     .ios-switch {
       position: relative;
       width: 48px;
       height: 28px;
       border-radius: 99px;
-      background: rgba(255, 255, 255, 0.18);
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.22);
       cursor: pointer;
       transition: background 0.2s ease;
       flex-shrink: 0;
@@ -775,12 +822,12 @@
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 6px;
       padding: 6px;
-      border-radius: 26px;
-      background: rgba(24, 31, 41, 0.58);
-      backdrop-filter: blur(28px) saturate(160%);
-      -webkit-backdrop-filter: blur(28px) saturate(160%);
-      border: 1px solid rgba(255, 255, 255, 0.24);
-      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.38), var(--glass-highlight);
+      border-radius: 24px;
+      background: rgba(22, 26, 32, 0.74);
+      backdrop-filter: blur(26px) saturate(160%);
+      -webkit-backdrop-filter: blur(26px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.42), var(--glass-highlight);
     }
     .nav-item {
       display: flex;
@@ -789,7 +836,7 @@
       justify-content: center;
       gap: 3px;
       padding: 8px 4px;
-      border-radius: 20px;
+      border-radius: 18px;
       border: none;
       background: transparent;
       color: var(--text-secondary);
@@ -797,11 +844,11 @@
       font-size: 0.68rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.18s ease;
+      transition: all 0.16s ease;
     }
     .nav-item.active {
       background: #ffffff;
-      color: #161d26;
+      color: #14181f;
       font-weight: 800;
     }
 
@@ -812,7 +859,7 @@
       position: fixed;
       inset: 0;
       z-index: 60;
-      background: rgba(10, 14, 20, 0.62);
+      background: rgba(10, 13, 18, 0.64);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       display: none;
@@ -833,14 +880,14 @@
       max-width: 440px;
       max-height: 86vh;
       overflow-y: auto;
-      background: rgba(34, 42, 54, 0.84);
-      backdrop-filter: blur(30px) saturate(150%);
-      -webkit-backdrop-filter: blur(30px) saturate(150%);
-      border: 1px solid rgba(255, 255, 255, 0.26);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), var(--glass-highlight);
-      border-radius: 28px;
+      background: rgba(28, 32, 38, 0.90);
+      backdrop-filter: blur(28px) saturate(150%);
+      -webkit-backdrop-filter: blur(28px) saturate(150%);
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), var(--glass-highlight);
+      border-radius: 26px;
       padding: 20px;
-      animation: fadeSlideUp 0.2s ease-out;
+      animation: fadeSlideUp 0.18s ease-out;
     }
     .modal-sheet.open { display: block; }
 
@@ -851,7 +898,7 @@
       margin-bottom: 16px;
     }
     .modal-title {
-      font-size: 1.05rem;
+      font-size: 1.04rem;
       font-weight: 700;
       color: #ffffff;
     }
@@ -873,9 +920,9 @@
       align-items: center;
       gap: 10px;
       padding: 12px 14px;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.14);
       font-size: 0.82rem;
       color: #ffffff;
       cursor: pointer;
@@ -897,11 +944,11 @@
       margin-bottom: 14px;
       padding: 6px 8px;
       border-radius: var(--radius-pill);
-      background: rgba(255, 255, 255, 0.09);
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
     }
     .cal-year-label {
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       font-weight: 800;
       letter-spacing: 0.06em;
     }
@@ -918,12 +965,12 @@
       justify-content: center;
       gap: 4px;
       padding: 14px 8px;
-      border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      background: rgba(255, 255, 255, 0.07);
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.06);
       color: #ffffff;
       font-family: inherit;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 700;
       letter-spacing: 0.04em;
       cursor: pointer;
@@ -931,7 +978,7 @@
     }
     .cal-month-cell.selected {
       background: #ffffff;
-      color: #161d26;
+      color: #14181f;
       border-color: #ffffff;
     }
     .cal-data-dot {
@@ -941,7 +988,7 @@
       background: var(--accent-emerald);
     }
     .cal-month-cell.selected .cal-data-dot {
-      background: #161d26;
+      background: #14181f;
     }
 
     /* Toast Notification */
@@ -963,23 +1010,27 @@
       pointer-events: auto;
       padding: 10px 16px;
       border-radius: var(--radius-pill);
-      background: rgba(22, 29, 38, 0.92);
+      background: rgba(20, 24, 31, 0.94);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.22);
       color: #ffffff;
       font-size: 0.8rem;
       font-weight: 600;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.38);
       opacity: 0;
       transform: translateY(-8px);
-      transition: all 0.22s ease;
+      transition: all 0.2s ease;
+      text-align: center;
     }
     .toast.show {
       opacity: 1;
       transform: translateY(0);
     }
-    .toast.coral { border-color: rgba(255, 123, 114, 0.6); color: var(--accent-coral); }
+    .toast.coral {
+      border-color: rgba(255, 123, 114, 0.6);
+      color: var(--accent-coral);
+    }
 
     .empty-msg {
       text-align: center;
@@ -991,22 +1042,25 @@
   </style>
 </head>
 <body>
-  <!-- Moody Blurred Dusk/Slate Ambient Backdrop -->
+  <!-- Deep Dusk / Slate Blurred Ambient Backdrop -->
   <div class="ambient-backdrop" aria-hidden="true">
-    <div class="ambient-orb orb-twilight"></div>
+    <div class="ambient-orb orb-dusk"></div>
     <div class="ambient-orb orb-slate"></div>
-    <div class="ambient-orb orb-deep"></div>
+    <div class="ambient-orb orb-warm"></div>
   </div>
 
   <!-- Main App Shell -->
   <div class="app-shell">
 
     <!-- ===================================================================
-         TOP HEADER: LARGE "KOSAH" TITLE + | NOV 2026 PICKER + REFRESH ICON
+         TOP HEADER:
+         - Tappable large "KOSAH" title (jumps to current month, no refresh icon)
+         - Compact "| NOV 2026" pill with two invisible 32px flanking tap zones
          =================================================================== -->
     <header class="app-header">
-      <h1 class="brand-title">KOSAH</h1>
-      <div class="header-controls">
+      <button id="btn-brand-today" type="button" class="brand-title-btn" aria-label="Kosah — Tap to jump to current month">KOSAH</button>
+      <div class="month-nav-group">
+        <button id="btn-prev-month-zone" type="button" class="invisible-nav-zone" aria-label="Previous Month"></button>
         <button id="btn-open-calendar" type="button" class="month-pill-btn" aria-label="Select Month and Year">
           <span class="month-pill-bar"></span>
           <span class="month-pill-text">
@@ -1014,12 +1068,7 @@
             <span id="header-year" class="y-thin">2026</span>
           </span>
         </button>
-        <button id="btn-refresh-today" type="button" class="icon-circle-btn" aria-label="Jump to Current Month and Refresh">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12a9 9 0 1 1-2.64-6.36" />
-            <polyline points="21 3 21 9 15 9" />
-          </svg>
-        </button>
+        <button id="btn-next-month-zone" type="button" class="invisible-nav-zone" aria-label="Next Month"></button>
       </div>
     </header>
 
@@ -1066,7 +1115,7 @@
         </button>
       </div>
 
-      <!-- Per-Category Interactive SVG Chart -->
+      <!-- Per-Category Interactive SVG Chart (Donut / VERTICAL Bar) -->
       <div class="glass-card">
         <div class="card-header">
           <div class="accent-bar-wrap">
@@ -1075,7 +1124,7 @@
           </div>
           <div class="segmented-toggle" role="group" aria-label="Chart Type">
             <button id="btn-chart-donut" type="button" class="active">Donut</button>
-            <button id="btn-chart-bar" type="button">Bars</button>
+            <button id="btn-chart-bar" type="button">Bar</button>
           </div>
         </div>
         <div id="exp-chart-stage" class="chart-stage"></div>
@@ -1124,14 +1173,14 @@
               <div id="bill-sum-income" class="val text-emerald">₹0</div>
             </div>
             <div class="summary-tile">
-              <div class="label-muted">Outflow (Bills + Exp)</div>
+              <div class="label-muted">Total Spend (Bills + Exp)</div>
               <div id="bill-sum-outflow" class="val text-coral">₹0</div>
             </div>
             <div class="summary-tile">
               <div class="label-muted">Total Savings</div>
-              <div id="bill-sum-saving" class="val text-amber">₹0</div>
+              <div id="bill-sum-saving" class="val text-gold">₹0</div>
             </div>
-            <div class="summary-tile" style="background:rgba(255,255,255,0.14);">
+            <div class="summary-tile" style="background:rgba(255,255,255,0.12);">
               <div class="label-muted">Net Balance</div>
               <div id="bill-sum-net" class="val">₹0</div>
             </div>
@@ -1190,7 +1239,7 @@
           </div>
           <div class="summary-tile">
             <div class="label-muted">Savings</div>
-            <div id="ov-snap-saving" class="val text-amber" style="font-size:0.92rem;">₹0</div>
+            <div id="ov-snap-saving" class="val text-gold" style="font-size:0.92rem;">₹0</div>
           </div>
           <div class="summary-tile" style="grid-column: span 2;">
             <div class="label-muted">Net Balance</div>
@@ -1199,14 +1248,14 @@
         </div>
       </div>
 
-      <!-- 12-Month Yearly Trend SVG Line/Area Chart -->
+      <!-- 12-Month Yearly Comparison SVG Chart -->
       <div class="glass-card">
         <div class="card-header">
           <div class="accent-bar-wrap">
             <span class="v-bar"></span>
-            <span class="card-title"><span id="ov-trend-year">2026</span> <span class="thin">TREND</span></span>
+            <span class="card-title"><span id="ov-trend-year">2026</span> <span class="thin">COMPARISON</span></span>
           </div>
-          <span class="label-muted">Income vs Spend</span>
+          <span class="label-muted">Income vs Outflow</span>
         </div>
 
         <div id="ov-trend-callout" class="trend-callout">
@@ -1223,10 +1272,62 @@
     </section>
 
     <!-- ===================================================================
-         TAB 4: VAULT (100% LOCAL DATA & CONTROLS — NO ICON GENERATOR)
+         TAB 4: VAULT (100% LOCAL DATA, MOVE MONTH DATA, NO ICON GENERATOR)
          =================================================================== -->
     <section id="panel-vault" class="tab-panel">
-      <!-- Local Data File Link Card -->
+      <!-- Auto-Rollover Setting -->
+      <div class="glass-card">
+        <div class="card-header" style="margin-bottom:12px;">
+          <div class="accent-bar-wrap">
+            <span class="v-bar"></span>
+            <span class="card-title">AUTO <span class="thin">ROLLOVER</span></span>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px;">
+          <div>
+            <div style="font-size:0.88rem; font-weight:600;">Auto-generate next month on 25th</div>
+            <div class="label-muted" style="margin-top:3px;">Creates next month's blank sheet automatically on or after the 25th.</div>
+          </div>
+          <button id="btn-toggle-rollover" type="button" class="ios-switch on" role="switch" aria-checked="true" aria-label="Toggle Auto-generate next month on 25th"></button>
+        </div>
+        <button id="btn-generate-next-now" type="button" class="btn-pill full">Generate Next Month Sheet</button>
+      </div>
+
+      <!-- NEW: Move Month Data Card -->
+      <div class="glass-card">
+        <div class="card-header" style="margin-bottom:10px;">
+          <div class="accent-bar-wrap">
+            <span class="v-bar gold"></span>
+            <span class="card-title">MOVE <span class="thin">MONTH DATA</span></span>
+          </div>
+        </div>
+        <p class="label-muted" style="margin-bottom:12px; line-height:1.45;">
+          Entered data in the wrong month? Move all budget, expenses, and bills cleanly from one month to another.
+        </p>
+
+        <div class="section-stack" style="gap:10px; margin-bottom:12px;">
+          <div class="move-picker-box">
+            <div class="move-picker-label">From Month</div>
+            <div class="grid-2">
+              <select id="move-from-month" class="glass-select" aria-label="From Month"></select>
+              <select id="move-from-year" class="glass-select" aria-label="From Year"></select>
+            </div>
+          </div>
+          <div class="move-picker-box">
+            <div class="move-picker-label">To Month</div>
+            <div class="grid-2">
+              <select id="move-to-month" class="glass-select" aria-label="To Month"></select>
+              <select id="move-to-year" class="glass-select" aria-label="To Year"></select>
+            </div>
+          </div>
+        </div>
+
+        <button id="btn-move-month-data" type="button" class="btn-pill gold full">
+          Move Data
+        </button>
+      </div>
+
+      <!-- Local Data File & Offline Exports Card -->
       <div class="glass-card">
         <div class="card-header">
           <div class="accent-bar-wrap">
@@ -1259,55 +1360,21 @@
           <a id="link-open-local-blob" href="#" target="_blank" rel="noopener" class="btn-pill primary full">
             Open Local Data File
           </a>
-          <button id="btn-save-sync-file" type="button" class="btn-pill full">
-            Save / Sync Local File (kosah-vault-data.json)
-          </button>
-          <a href="shareddocuments://" class="btn-pill full" style="background:rgba(255,255,255,0.08);">
-            Open iOS Files App
-          </a>
+          <div class="grid-2">
+            <button id="btn-export-json" type="button" class="btn-pill">Download JSON Backup</button>
+            <label for="input-import-json" class="btn-pill" style="cursor:pointer;">
+              Import JSON Restore
+              <input id="input-import-json" type="file" accept=".json,application/json" style="display:none;" />
+            </label>
+          </div>
+          <div class="grid-2">
+            <button id="btn-export-csv" type="button" class="btn-pill">Export CSV</button>
+            <button id="btn-export-txt" type="button" class="btn-pill">Export .TXT Summary</button>
+          </div>
         </div>
         <p class="label-muted" style="margin-top:10px; line-height:1.45;">
-          Tap <strong>Save / Sync Local File</strong> to store a copy in your phone's <em>Files / Downloads</em> folder so you can view or back up your records anytime without opening Kosah. Zero data ever leaves your device.
+          100% private on-device storage. Zero data is ever sent to GitHub or any external server.
         </p>
-      </div>
-
-      <!-- Auto-Rollover Setting -->
-      <div class="glass-card">
-        <div class="card-header" style="margin-bottom:12px;">
-          <div class="accent-bar-wrap">
-            <span class="v-bar"></span>
-            <span class="card-title">AUTO <span class="thin">ROLLOVER</span></span>
-          </div>
-        </div>
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px;">
-          <div>
-            <div style="font-size:0.88rem; font-weight:600;">Auto-generate next month on 25th</div>
-            <div class="label-muted" style="margin-top:3px;">Creates next month's blank sheet automatically on or after the 25th.</div>
-          </div>
-          <button id="btn-toggle-rollover" type="button" class="ios-switch on" role="switch" aria-checked="true" aria-label="Toggle Auto-generate next month on 25th"></button>
-        </div>
-        <button id="btn-generate-next-now" type="button" class="btn-pill full">Generate Next Month Now</button>
-      </div>
-
-      <!-- Offline Exports & Backup -->
-      <div class="glass-card">
-        <div class="card-header" style="margin-bottom:12px;">
-          <div class="accent-bar-wrap">
-            <span class="v-bar"></span>
-            <span class="card-title">OFFLINE <span class="thin">EXPORTS</span></span>
-          </div>
-        </div>
-        <div class="grid-2" style="margin-bottom:9px;">
-          <button id="btn-export-csv" type="button" class="btn-pill">Export CSV</button>
-          <button id="btn-export-txt" type="button" class="btn-pill">Export .TXT</button>
-        </div>
-        <div class="grid-2">
-          <button id="btn-export-json" type="button" class="btn-pill">Backup JSON</button>
-          <label for="input-import-json" class="btn-pill" style="cursor:pointer;">
-            Restore JSON
-            <input id="input-import-json" type="file" accept=".json,application/json" style="display:none;" />
-          </label>
-        </div>
       </div>
 
       <!-- Reset Data Section -->
@@ -1322,7 +1389,7 @@
           <button id="btn-reset-month" type="button" class="btn-pill danger full">
             Reset This Month (NOV 2026)
           </button>
-          <button id="btn-reset-complete" type="button" class="btn-pill danger full" style="background:rgba(255,123,114,0.24);">
+          <button id="btn-reset-complete" type="button" class="btn-pill danger full" style="background:rgba(255,123,114,0.22);">
             Reset Complete Data
           </button>
         </div>
@@ -1507,21 +1574,21 @@
         <span id="confirm-title" class="modal-title">Confirm Action</span>
         <button type="button" class="icon-btn" data-close-modal aria-label="Close">✕</button>
       </div>
-      <p id="confirm-message" class="label-muted" style="font-size:0.86rem; line-height:1.5; color:rgba(255,255,255,0.78);"></p>
+      <p id="confirm-message" class="label-muted" style="font-size:0.86rem; line-height:1.5; color:rgba(248,250,252,0.80);"></p>
       <label id="confirm-future-wrap" class="checkbox-card" style="display:none;">
-        <input id="confirm-future-check" type="checkbox" checked />
+        <input id="confirm-future-check" type="checkbox" />
         <span>Also remove from future auto-generated months</span>
       </label>
       <div style="display:flex; gap:10px; margin-top:16px;">
         <button type="button" class="btn-pill full" data-close-modal>Cancel</button>
-        <button id="btn-confirm-proceed" type="button" class="btn-pill danger full" style="background:rgba(255,123,114,0.24);">Delete</button>
+        <button id="btn-confirm-proceed" type="button" class="btn-pill danger full" style="background:rgba(255,123,114,0.22);">Confirm</button>
       </div>
     </div>
 
   </div>
 
   <!-- =====================================================================
-       APPLICATION LOGIC (100% LOCALSTORAGE, ZERO NETWORK REQUESTS)
+       APPLICATION LOGIC (100% LOCALSTORAGE, ZERO EXTERNAL REQUESTS)
        ===================================================================== -->
   <script>
     (function () {
@@ -1539,7 +1606,7 @@
 
       function createFactoryState() {
         return {
-          version: 2,
+          version: 3,
           lastUpdated: new Date().toISOString(),
           settings: {
             autoGenerateOn25th: true,
@@ -1547,7 +1614,7 @@
           },
           categories: [
             { id: 'cat_groceries', name: 'Groceries', color: '#4ade80' },
-            { id: 'cat_dining', name: 'Dining', color: '#f5c542' },
+            { id: 'cat_dining', name: 'Dining', color: '#e8c97e' },
             { id: 'cat_transport', name: 'Transport', color: '#60a5fa' },
             { id: 'cat_shopping', name: 'Shopping', color: '#c084fc' },
             { id: 'cat_utilities', name: 'Utilities', color: '#38bdf8' },
@@ -1598,6 +1665,13 @@
           minimumFractionDigits: abs % 1 !== 0 ? 2 : 0
         });
         return (num < 0 ? '-₹' : '₹') + formatted;
+      }
+
+      function formatCompactINR(val) {
+        const num = Math.abs(Number(val) || 0);
+        if (num >= 100000) return '₹' + (num / 100000).toFixed(num % 100000 === 0 ? 0 : 1) + 'L';
+        if (num >= 1000) return '₹' + (num / 1000).toFixed(num % 1000 === 0 ? 0 : 1) + 'k';
+        return '₹' + Math.round(num);
       }
 
       function esc(str) {
@@ -1687,15 +1761,24 @@
         return state.months[key];
       }
 
+      function monthHasMeaningfulData(md) {
+        if (!md) return false;
+        const hasExp = Array.isArray(md.expenses) && md.expenses.length > 0;
+        const hasBillAmt = Array.isArray(md.bills) && md.bills.some(s =>
+          (s.items || []).some(i => Number(i.amount) > 0 || i.status === 'paid' || i.status === 'skipped')
+        );
+        return hasExp || hasBillAmt;
+      }
+
       function runAutoRolloverCheck() {
-        // Ensure current calendar month exists on first run
-        const curY = now.getFullYear();
-        const curM = now.getMonth();
+        const cur = new Date();
+        const curY = cur.getFullYear();
+        const curM = cur.getMonth();
         if (!state.months[monthKey(curY, curM)]) {
           initMonthSheet(curY, curM, true);
         }
         if (!state.settings.autoGenerateOn25th) return;
-        if (now.getDate() >= 25) {
+        if (cur.getDate() >= 25) {
           let ny = curY, nm = curM + 1;
           if (nm > 11) { nm = 0; ny += 1; }
           const nKey = monthKey(ny, nm);
@@ -1705,6 +1788,17 @@
             showToast(`${MONTHS_SHORT[nm]} ${ny} blank sheet auto-generated`);
           }
         }
+      }
+
+      function stepMonth(delta) {
+        let m = selectedMonth + delta;
+        let y = selectedYear;
+        if (m < 0) { m = 11; y -= 1; }
+        else if (m > 11) { m = 0; y += 1; }
+        selectedYear = y;
+        selectedMonth = m;
+        trendFocusMonth = m;
+        renderCurrentView();
       }
 
       function computeCashflow(md) {
@@ -1724,7 +1818,7 @@
       }
 
       /* -------------------------------------------------------------------
-         TOAST & MODAL SYSTEM
+         TOAST & MODAL SYSTEM (NO alert() / confirm())
          ------------------------------------------------------------------- */
       function showToast(msg, isError = false) {
         const stack = document.getElementById('toast-stack');
@@ -1735,8 +1829,8 @@
         requestAnimationFrame(() => el.classList.add('show'));
         setTimeout(() => {
           el.classList.remove('show');
-          setTimeout(() => el.remove(), 240);
-        }, 2800);
+          setTimeout(() => el.remove(), 220);
+        }, 2600);
       }
 
       function openModal(id) {
@@ -1785,8 +1879,7 @@
         const grid = document.getElementById('cal-month-grid');
         grid.innerHTML = MONTHS_SHORT.map((mLabel, idx) => {
           const mk = monthKey(pickerYear, idx);
-          const md = state.months[mk];
-          const hasData = !!(md && ((md.expenses && md.expenses.length > 0) || (md.bills && md.bills.some(s => s.items.some(i => Number(i.amount) > 0)))));
+          const hasData = monthHasMeaningfulData(state.months[mk]);
           const isSel = pickerYear === selectedYear && idx === selectedMonth;
           return `
             <button type="button" class="cal-month-cell${isSel ? ' selected' : ''}" data-pick-month="${idx}">
@@ -1798,7 +1891,7 @@
       }
 
       /* -------------------------------------------------------------------
-         TAB 1: EXPENSES + PURE INLINE SVG DONUT & BAR CHARTS
+         TAB 1: EXPENSES + PURE INLINE SVG DONUT & VERTICAL BAR CHARTS
          ------------------------------------------------------------------- */
       function renderExpensesTab() {
         const key = monthKey(selectedYear, selectedMonth);
@@ -1850,7 +1943,7 @@
           stage.innerHTML = `<div class="empty-msg">No expenses logged for ${MONTHS_SHORT[selectedMonth]} ${selectedYear}.<br/>Tap <strong>+ New Expense</strong> to add one.</div>`;
           legend.innerHTML = '';
         } else {
-          stage.innerHTML = chartMode === 'donut' ? buildDonutSvg(breakdown, spent) : buildBarsSvg(breakdown);
+          stage.innerHTML = chartMode === 'donut' ? buildDonutSvg(breakdown, spent) : buildVerticalBarSvg(breakdown);
           legend.innerHTML = breakdown.map(b => `
             <div class="cat-legend-item">
               <div style="display:flex; align-items:center; gap:9px; min-width:0;">
@@ -1880,7 +1973,7 @@
                 <div class="expense-main">
                   <span class="v-bar" style="background:${cat.color};"></span>
                   <div style="min-width:0;">
-                    <div class="expense-title">${esc(cat.name)}${e.note ? ` · <span style="font-weight:400; color:rgba(255,255,255,0.7);">${esc(e.note)}</span>` : ''}</div>
+                    <div class="expense-title">${esc(cat.name)}${e.note ? ` · <span style="font-weight:400; color:rgba(248,250,252,0.7);">${esc(e.note)}</span>` : ''}</div>
                     <div class="expense-sub">${dateStr}</div>
                   </div>
                 </div>
@@ -1915,31 +2008,63 @@
 
         return `
           <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="Category Donut Chart">
-            <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="rgba(0,0,0,0.28)" stroke-width="18" />
+            <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="rgba(0,0,0,0.32)" stroke-width="18" />
             ${segments}
             <text x="${cx}" y="${cy - 4}" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="800">${esc(formatINR(total))}</text>
-            <text x="${cx}" y="${cy + 15}" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10" font-weight="600" letter-spacing="1">TOTAL SPENT</text>
+            <text x="${cx}" y="${cy + 15}" text-anchor="middle" fill="rgba(226,232,240,0.6)" font-size="10" font-weight="600" letter-spacing="1">TOTAL SPENT</text>
           </svg>
         `;
       }
 
-      function buildBarsSvg(breakdown) {
+      /* VERTICAL COLUMN BAR CHART (pure inline SVG, rising from horizontal baseline) */
+      function buildVerticalBarSvg(breakdown) {
+        const count = breakdown.length;
         const maxVal = Math.max(...breakdown.map(b => b.amount), 1);
-        const rowH = 38;
-        const h = breakdown.length * rowH + 6;
-        const rows = breakdown.map((b, i) => {
-          const y = i * rowH + 6;
-          const barW = Math.max(4, (b.amount / maxVal) * 100);
+        const slotW = 72;
+        const barW = 28;
+        const padX = 16;
+        const svgW = Math.max(320, padX * 2 + count * slotW);
+        const svgH = 212;
+        const topY = 30;
+        const baseY = 176;
+        const maxH = baseY - topY;
+
+        // Center columns neatly when there are few categories
+        const totalSlotsW = count * slotW;
+        const startX = (svgW - totalSlotsW) / 2;
+
+        const midY = topY + maxH / 2;
+        const gridLines = `
+          <line x1="10" y1="${topY}" x2="${svgW - 10}" y2="${topY}" stroke="rgba(255,255,255,0.08)" stroke-dasharray="3 3" stroke-width="1" />
+          <line x1="10" y1="${midY}" x2="${svgW - 10}" y2="${midY}" stroke="rgba(255,255,255,0.08)" stroke-dasharray="3 3" stroke-width="1" />
+          <line x1="10" y1="${baseY}" x2="${svgW - 10}" y2="${baseY}" stroke="rgba(255,255,255,0.22)" stroke-width="1.2" />
+        `;
+
+        const cols = breakdown.map((b, i) => {
+          const cx = startX + i * slotW + slotW / 2;
+          const bx = cx - barW / 2;
+          const barH = Math.max(8, (b.amount / maxVal) * maxH);
+          const by = baseY - barH;
+          const shortName = b.name.length > 9 ? b.name.slice(0, 8) + '…' : b.name;
+          const valLabel = formatCompactINR(b.amount);
           return `
-            <g transform="translate(0, ${y})">
-              <text x="0" y="11" fill="#ffffff" font-size="11" font-weight="600">${esc(b.name)}</text>
-              <text x="320" y="11" text-anchor="end" fill="rgba(255,255,255,0.75)" font-size="11" font-weight="700">${esc(formatINR(b.amount))} (${b.pct.toFixed(0)}%)</text>
-              <rect x="0" y="18" width="320" height="8" rx="4" fill="rgba(0,0,0,0.32)" />
-              <rect x="0" y="18" width="${(barW * 3.2).toFixed(1)}" height="8" rx="4" fill="${b.color}" />
+            <g>
+              <rect x="${bx.toFixed(1)}" y="${topY}" width="${barW}" height="${maxH}" rx="8" fill="rgba(255,255,255,0.04)" />
+              <rect x="${bx.toFixed(1)}" y="${by.toFixed(1)}" width="${barW}" height="${barH.toFixed(1)}" rx="8" fill="${b.color}" />
+              <text x="${cx.toFixed(1)}" y="${(by - 8).toFixed(1)}" text-anchor="middle" fill="#ffffff" font-size="10.5" font-weight="700">${esc(valLabel)}</text>
+              <text x="${cx.toFixed(1)}" y="${(baseY + 18).toFixed(1)}" text-anchor="middle" fill="rgba(226,232,240,0.78)" font-size="10.5" font-weight="600">${esc(shortName)}</text>
             </g>
           `;
         }).join('');
-        return `<svg viewBox="0 0 320 ${h}" style="width:100%; height:auto;" role="img" aria-label="Category Horizontal Bar Chart">${rows}</svg>`;
+
+        return `
+          <div class="vbar-scroll-wrap">
+            <svg width="${svgW}" height="${svgH}" viewBox="0 0 ${svgW} ${svgH}" style="display:block; margin:0 auto;" role="img" aria-label="Category Vertical Bar Chart">
+              ${gridLines}
+              ${cols}
+            </svg>
+          </div>
+        `;
       }
 
       /* -------------------------------------------------------------------
@@ -1967,7 +2092,7 @@
         listEl.innerHTML = md.bills.map(sec => {
           const secTotal = (sec.items || []).reduce((s, it) => s + (it.status === 'skipped' ? 0 : (Number(it.amount) || 0)), 0);
           const paidText = sec.type === 'income' ? 'Received' : 'Paid';
-          const barClass = sec.type === 'income' ? 'emerald' : (sec.type === 'saving' ? 'amber' : '');
+          const barClass = sec.type === 'income' ? 'emerald' : (sec.type === 'saving' ? 'gold' : '');
 
           const itemsHtml = (sec.items || []).map(it => {
             const pillText = it.status === 'paid' ? paidText : (it.status === 'skipped' ? 'Skipped' : 'Pending');
@@ -2032,7 +2157,7 @@
       }
 
       /* -------------------------------------------------------------------
-         TAB 3: OVERVIEW + 12-MONTH YEARLY TREND SVG LINE/AREA CHART
+         TAB 3: OVERVIEW + 12-MONTH YEARLY COMPARISON SVG CHART
          ------------------------------------------------------------------- */
       function renderOverviewTab() {
         const key = monthKey(selectedYear, selectedMonth);
@@ -2079,7 +2204,7 @@
         snapNet.textContent = formatINR(cf.net);
         snapNet.className = `val ${cf.net < 0 ? 'text-coral' : 'text-emerald'}`;
 
-        // 3. 12-Month Yearly Trend SVG Chart
+        // 3. 12-Month Yearly Comparison SVG Chart
         document.getElementById('ov-trend-year').textContent = String(selectedYear);
         const series = [];
         for (let m = 0; m < 12; m++) {
@@ -2095,7 +2220,7 @@
         document.getElementById('ov-callout-in').textContent = formatINR(active.income);
         document.getElementById('ov-callout-out').textContent = formatINR(active.spend);
 
-        const w = 340, h = 136, padX = 16, padTop = 18, padBot = 24;
+        const w = 340, h = 140, padX = 16, padTop = 18, padBot = 24;
         const chartW = w - padX * 2;
         const chartH = h - padTop - padBot;
         const maxV = Math.max(...series.map(s => Math.max(s.income, s.spend)), 1000);
@@ -2114,7 +2239,7 @@
         const dots = series.map((s, i) => {
           const isFocus = i === trendFocusMonth;
           return `
-            <circle cx="${spendPts[i][0].toFixed(1)}" cy="${spendPts[i][1].toFixed(1)}" r="${isFocus ? 4.5 : 2.5}" fill="#ffffff" stroke="${isFocus ? '#ff7b72' : 'none'}" stroke-width="2" />
+            <circle cx="${spendPts[i][0].toFixed(1)}" cy="${spendPts[i][1].toFixed(1)}" r="${isFocus ? 4.5 : 2.4}" fill="#ffffff" stroke="${isFocus ? '#ff7b72' : 'none'}" stroke-width="2" />
             <circle cx="${incomePts[i][0].toFixed(1)}" cy="${incomePts[i][1].toFixed(1)}" r="${isFocus ? 4 : 2}" fill="#4ade80" opacity="${isFocus ? 1 : 0.75}" />
           `;
         }).join('');
@@ -2122,10 +2247,10 @@
         const focusX = ptX(trendFocusMonth).toFixed(1);
 
         document.getElementById('ov-trend-svg-wrap').innerHTML = `
-          <svg viewBox="0 0 ${w} ${h}" style="width:100%; height:auto; display:block;" role="img" aria-label="12-Month Yearly Trend Chart">
+          <svg viewBox="0 0 ${w} ${h}" style="width:100%; height:auto; display:block;" role="img" aria-label="12-Month Yearly Comparison Chart">
             <defs>
               <linearGradient id="spendAreaGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.28"/>
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.26"/>
                 <stop offset="100%" stop-color="#ffffff" stop-opacity="0.01"/>
               </linearGradient>
             </defs>
@@ -2133,11 +2258,11 @@
             <line x1="${focusX}" y1="${padTop - 4}" x2="${focusX}" y2="${padTop + chartH}" stroke="rgba(255,255,255,0.28)" stroke-dasharray="3 3" stroke-width="1" />
             <path d="${spendArea}" fill="url(#spendAreaGrad)" />
             <path d="${incomePath}" fill="none" stroke="#4ade80" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round" stroke-linejoin="round" opacity="0.88" />
-            <path d="${spendPath}" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="${spendPath}" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
             ${dots}
-            <text x="${padX}" y="${h - 4}" fill="rgba(255,255,255,0.5)" font-size="9" font-weight="600">JAN</text>
-            <text x="${w / 2}" y="${h - 4}" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9" font-weight="600">JUN</text>
-            <text x="${w - padX}" y="${h - 4}" text-anchor="end" fill="rgba(255,255,255,0.5)" font-size="9" font-weight="600">DEC</text>
+            <text x="${padX}" y="${h - 4}" fill="rgba(226,232,240,0.52)" font-size="9" font-weight="600">JAN</text>
+            <text x="${w / 2}" y="${h - 4}" text-anchor="middle" fill="rgba(226,232,240,0.52)" font-size="9" font-weight="600">JUN</text>
+            <text x="${w - padX}" y="${h - 4}" text-anchor="end" fill="rgba(226,232,240,0.52)" font-size="9" font-weight="600">DEC</text>
           </svg>
         `;
 
@@ -2147,17 +2272,84 @@
       }
 
       /* -------------------------------------------------------------------
-         TAB 4: VAULT & LOCAL FILE LINK
+         TAB 4: VAULT, MOVE MONTH DATA & LOCAL FILE LINK
          ------------------------------------------------------------------- */
+      function populateMoveMonthSelectors() {
+        const fromM = document.getElementById('move-from-month');
+        const fromY = document.getElementById('move-from-year');
+        const toM = document.getElementById('move-to-month');
+        const toY = document.getElementById('move-to-year');
+
+        const monthOpts = MONTHS_FULL.map((name, idx) => `<option value="${idx}">${name}</option>`).join('');
+        fromM.innerHTML = monthOpts;
+        toM.innerHTML = monthOpts;
+
+        const yearsSet = new Set();
+        const baseY = now.getFullYear();
+        for (let y = baseY - 3; y <= baseY + 2; y++) yearsSet.add(y);
+        yearsSet.add(selectedYear);
+        Object.keys(state.months).forEach(k => {
+          const y = parseInt(k.split('-')[0], 10);
+          if (!isNaN(y)) yearsSet.add(y);
+        });
+        const sortedYears = Array.from(yearsSet).sort((a, b) => a - b);
+        const yearOpts = sortedYears.map(y => `<option value="${y}">${y}</option>`).join('');
+        fromY.innerHTML = yearOpts;
+        toY.innerHTML = yearOpts;
+
+        // Default From = active month; Default To = next month
+        fromM.value = String(selectedMonth);
+        fromY.value = String(selectedYear);
+        let nextM = selectedMonth + 1;
+        let nextY = selectedYear;
+        if (nextM > 11) { nextM = 0; nextY += 1; }
+        toM.value = String(nextM);
+        toY.value = String(sortedYears.includes(nextY) ? nextY : selectedYear);
+      }
+
+      function executeMoveMonthData(srcY, srcM, dstY, dstM) {
+        const srcKey = monthKey(srcY, srcM);
+        const dstKey = monthKey(dstY, dstM);
+        const srcData = state.months[srcKey];
+        if (!srcData) return;
+
+        // Deep clone source month bucket into target month
+        const cloned = JSON.parse(JSON.stringify(srcData));
+
+        // Update expense dates' YYYY-MM to match target month cleanly
+        const maxDayInDst = new Date(dstY, dstM + 1, 0).getDate();
+        if (Array.isArray(cloned.expenses)) {
+          cloned.expenses.forEach(exp => {
+            if (exp.date && /^\d{4}-\d{2}-\d{2}$/.test(exp.date)) {
+              const origDay = parseInt(exp.date.slice(8, 10), 10) || 1;
+              const clampedDay = Math.min(origDay, maxDayInDst);
+              exp.date = `${dstY}-${String(dstM + 1).padStart(2, '0')}-${String(clampedDay).padStart(2, '0')}`;
+            }
+          });
+        }
+
+        state.months[dstKey] = cloned;
+        delete state.months[srcKey];
+        saveState();
+
+        // Switch active view to target month
+        selectedYear = dstY;
+        selectedMonth = dstM;
+        trendFocusMonth = dstM;
+        renderCurrentView();
+        showToast(`Moved data from ${MONTHS_SHORT[srcM]} ${srcY} to ${MONTHS_SHORT[dstM]} ${dstY}`);
+      }
+
       function updateVaultFileMeta() {
         const raw = localStorage.getItem(STORAGE_KEY) || JSON.stringify(state);
         const kb = (new Blob([raw]).size / 1024).toFixed(1);
         document.getElementById('vault-size-kb').textContent = `${kb} KB`;
         document.getElementById('vault-months-count').textContent = String(Object.keys(state.months).length);
-        const lu = state.lastUpdated ? new Date(state.lastUpdated).toLocaleString('en-IN', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : '—';
+        const lu = state.lastUpdated
+          ? new Date(state.lastUpdated).toLocaleString('en-IN', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })
+          : '—';
         document.getElementById('vault-last-updated').textContent = lu;
 
-        // Live Blob URL for direct "Open Local Data File" link
         if (localBlobUrl) URL.revokeObjectURL(localBlobUrl);
         const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
         localBlobUrl = URL.createObjectURL(blob);
@@ -2166,6 +2358,7 @@
 
       function renderVaultTab() {
         updateVaultFileMeta();
+        populateMoveMonthSelectors();
         const sw = document.getElementById('btn-toggle-rollover');
         const isOn = !!state.settings.autoGenerateOn25th;
         sw.className = `ios-switch${isOn ? ' on' : ''}`;
@@ -2174,7 +2367,7 @@
       }
 
       /* -------------------------------------------------------------------
-         EXPORTS, FILE SYNC & RESTORE
+         EXPORTS & RESTORE
          ------------------------------------------------------------------- */
       function downloadFile(content, filename, mime) {
         const blob = new Blob([content], { type: mime });
@@ -2186,27 +2379,6 @@
         a.click();
         a.remove();
         setTimeout(() => URL.revokeObjectURL(url), 1000);
-      }
-
-      async function saveOrSyncLocalFile() {
-        const content = JSON.stringify(state, null, 2);
-        if (window.showSaveFilePicker) {
-          try {
-            const handle = await window.showSaveFilePicker({
-              suggestedName: 'kosah-vault-data.json',
-              types: [{ description: 'Kosah Local Vault JSON', accept: { 'application/json': ['.json'] } }]
-            });
-            const writable = await handle.createWritable();
-            await writable.write(content);
-            await writable.close();
-            showToast('Local vault file synced!');
-            return;
-          } catch (err) {
-            if (err && err.name === 'AbortError') return;
-          }
-        }
-        downloadFile(content, 'kosah-vault-data.json', 'application/json');
-        showToast('Saved kosah-vault-data.json to device Files');
       }
 
       function exportCsv() {
@@ -2313,8 +2485,8 @@
             short_name: 'Kosah',
             start_url: './',
             display: 'standalone',
-            background_color: '#161d26',
-            theme_color: '#1c232d',
+            background_color: '#14181f',
+            theme_color: '#1c2026',
             icons: [{ src: 'icon.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' }]
           };
           const link = document.createElement('link');
@@ -2332,6 +2504,21 @@
         document.querySelectorAll('.nav-item').forEach(btn => {
           btn.addEventListener('click', () => switchTab(btn.dataset.tab));
         });
+
+        // Tap on "KOSAH" title -> Jump to current month (replaces refresh button)
+        document.getElementById('btn-brand-today').addEventListener('click', () => {
+          const fresh = new Date();
+          selectedYear = fresh.getFullYear();
+          selectedMonth = fresh.getMonth();
+          trendFocusMonth = selectedMonth;
+          runAutoRolloverCheck();
+          renderCurrentView();
+          showToast('Jumped to current month');
+        });
+
+        // Invisible limited-width flanking zones around Month & Year pill
+        document.getElementById('btn-prev-month-zone').addEventListener('click', () => stepMonth(-1));
+        document.getElementById('btn-next-month-zone').addEventListener('click', () => stepMonth(1));
 
         // Header Calendar Picker
         document.getElementById('btn-open-calendar').addEventListener('click', () => {
@@ -2355,17 +2542,6 @@
           trendFocusMonth = selectedMonth;
           closeModals();
           renderCurrentView();
-        });
-
-        // Refresh Icon Button (jumps to current month & refreshes calculations)
-        document.getElementById('btn-refresh-today').addEventListener('click', () => {
-          const fresh = new Date();
-          selectedYear = fresh.getFullYear();
-          selectedMonth = fresh.getMonth();
-          trendFocusMonth = selectedMonth;
-          runAutoRolloverCheck();
-          renderCurrentView();
-          showToast(`Refreshed · ${MONTHS_SHORT[selectedMonth]} ${selectedYear}`);
         });
 
         // Modal Close
@@ -2432,7 +2608,7 @@
           showToast(`Logged ${formatINR(amount)}`);
         });
 
-        // Expenses: Delete Expense (with confirmation modal)
+        // Expenses: Delete Expense
         document.getElementById('exp-list').addEventListener('click', e => {
           const btn = e.target.closest('[data-del-exp]');
           if (!btn) return;
@@ -2452,7 +2628,7 @@
           });
         });
 
-        // Expenses: Chart Mode Toggle
+        // Expenses: Chart Mode Toggle (Donut / Vertical Bar)
         document.getElementById('btn-chart-donut').addEventListener('click', () => {
           chartMode = 'donut';
           document.getElementById('btn-chart-donut').classList.add('active');
@@ -2511,7 +2687,7 @@
           showToast(`Blank sheet created for ${MONTHS_SHORT[selectedMonth]} ${selectedYear}`);
         });
 
-        // Bills: Inline Amount Input (no full re-render so focus stays rock solid)
+        // Bills: Inline Amount Input
         const billsList = document.getElementById('bills-sections-list');
         billsList.addEventListener('input', e => {
           const inp = e.target.closest('[data-bill-amt]');
@@ -2531,7 +2707,7 @@
           }
         });
 
-        // Bills: Status Cycle, Add Item, Delete Item (with future toggle), Delete Section (with future toggle)
+        // Bills: Status Cycle, Add Item, Smart Delete Item & Section
         billsList.addEventListener('click', e => {
           const key = monthKey(selectedYear, selectedMonth);
           const md = state.months[key];
@@ -2584,7 +2760,9 @@
                 }
                 saveState();
                 renderBillsTab();
-                showToast(removeFromFuture ? `Deleted "${it.name}" from current & future months` : `Deleted "${it.name}" from ${MONTHS_SHORT[selectedMonth]}`);
+                showToast(removeFromFuture
+                  ? `Deleted "${it.name}" from current & future months`
+                  : `Deleted "${it.name}" from ${MONTHS_SHORT[selectedMonth]}`);
               }
             });
             return;
@@ -2606,7 +2784,9 @@
                 }
                 saveState();
                 renderBillsTab();
-                showToast(removeFromFuture ? `Deleted "${sec.name}" from current & future months` : `Deleted "${sec.name}" from ${MONTHS_SHORT[selectedMonth]}`);
+                showToast(removeFromFuture
+                  ? `Deleted "${sec.name}" from current & future months`
+                  : `Deleted "${sec.name}" from ${MONTHS_SHORT[selectedMonth]}`);
               }
             });
           }
@@ -2666,13 +2846,44 @@
           renderOverviewTab();
         });
 
-        // Vault: Local File Sync, Exports, Import, Rollover, Reset
-        document.getElementById('btn-save-sync-file').addEventListener('click', saveOrSyncLocalFile);
+        // Vault: Move Month Data
+        document.getElementById('btn-move-month-data').addEventListener('click', () => {
+          const srcM = Number(document.getElementById('move-from-month').value);
+          const srcY = Number(document.getElementById('move-from-year').value);
+          const dstM = Number(document.getElementById('move-to-month').value);
+          const dstY = Number(document.getElementById('move-to-year').value);
+
+          const srcKey = monthKey(srcY, srcM);
+          const dstKey = monthKey(dstY, dstM);
+          const srcLabel = `${MONTHS_SHORT[srcM]} ${srcY}`;
+          const dstLabel = `${MONTHS_SHORT[dstM]} ${dstY}`;
+
+          if (srcKey === dstKey) {
+            showToast('Source and target months must be different.', true);
+            return;
+          }
+          if (!state.months[srcKey]) {
+            showToast(`No data found in ${srcLabel} to move.`, true);
+            return;
+          }
+
+          const dstHasData = monthHasMeaningfulData(state.months[dstKey]);
+          askConfirm({
+            title: dstHasData ? `Overwrite ${dstLabel}?` : `Move ${srcLabel} → ${dstLabel}?`,
+            message: dstHasData
+              ? `${dstLabel} already has saved data. Moving ${srcLabel} into ${dstLabel} will overwrite all existing budget, expenses, and bills in ${dstLabel}, and clear ${srcLabel}.`
+              : `Move all budget, expenses, and bills from ${srcLabel} to ${dstLabel}? ${srcLabel} will be cleared afterward.`,
+            confirmLabel: dstHasData ? 'Overwrite & Move' : 'Move Data',
+            onConfirm: () => executeMoveMonthData(srcY, srcM, dstY, dstM)
+          });
+        });
+
+        // Vault: Exports, Import, Rollover, Reset
         document.getElementById('btn-export-csv').addEventListener('click', exportCsv);
         document.getElementById('btn-export-txt').addEventListener('click', exportTxt);
         document.getElementById('btn-export-json').addEventListener('click', () => {
           downloadFile(JSON.stringify(state, null, 2), `kosah_backup_${now.toISOString().slice(0, 10)}.json`, 'application/json');
-          showToast('JSON backup exported');
+          showToast('JSON backup downloaded');
         });
         document.getElementById('input-import-json').addEventListener('change', e => {
           const file = e.target.files?.[0];
