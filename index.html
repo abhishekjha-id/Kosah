@@ -25,15 +25,16 @@
       --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.16);
       --glass-shadow: 0 18px 42px rgba(0, 0, 0, 0.34);
 
-      --text-primary: #f8fafc;
+      --text-primary: #f1f5f9;
       --text-secondary: rgba(226, 232, 240, 0.64);
       --text-muted: rgba(203, 213, 225, 0.44);
 
       --accent-white: #ffffff;
       --accent-gold: #e8c97e;
-      --accent-coral: #ff7b72;
-      --accent-amber: #f5c542;
-      --accent-emerald: #4ade80;
+      --accent-coral: #fb7185;
+      --accent-amber: #f59e0b;
+      --accent-emerald: #34d399;
+      --accent-blue: #60a5fa;
 
       --radius-card: 22px;
       --radius-row: 16px;
@@ -127,7 +128,7 @@
       padding: 12px 14px;
     }
 
-    /* Signature Vertical White Accent Bar (|) */
+    /* Vertical Accent Bar (|) */
     .accent-bar-wrap {
       display: flex;
       align-items: center;
@@ -148,8 +149,7 @@
     .v-bar.emerald { background: var(--accent-emerald); }
 
     /* =========================================================================
-       HEADER: LARGE "KOSAH" (TAP = CURRENT MONTH) + COMPACT MONTH/YEAR CONTROL
-       WITH INVISIBLE LIMITED-WIDTH LEFT/RIGHT TAP ZONES
+       HEADER: LARGE "KOSAH" (TAP = TODAY) + MONTH/YEAR PILL WITH INVISIBLE ZONES
        ========================================================================= */
     .app-header {
       position: sticky;
@@ -169,9 +169,9 @@
       border-radius: var(--radius-card);
     }
 
-    /* Tappable Brand Title (No subtitle, no refresh button) */
     .brand-title-btn {
       appearance: none;
+      -webkit-appearance: none;
       background: transparent;
       border: none;
       padding: 4px 2px;
@@ -190,16 +190,16 @@
       transform: scale(0.96);
     }
 
-    /* Compact Month/Year Group with Strictly Limited-Width Invisible Flanking Zones */
     .month-nav-group {
       display: inline-flex;
       align-items: center;
       flex-shrink: 0;
     }
 
-    /* Invisible Left/Right Tap Zones (32px wide, no icons, no borders, no arrows) */
+    /* Invisible 32px-wide flanking tap zones (no icons, no borders, no arrows) */
     .invisible-nav-zone {
       appearance: none;
+      -webkit-appearance: none;
       width: 32px;
       height: 40px;
       background: transparent;
@@ -211,7 +211,6 @@
       outline: none;
     }
 
-    /* Center Month & Year Tappable Pill: | NOV 2026 */
     .month-pill-btn {
       display: inline-flex;
       align-items: center;
@@ -253,7 +252,7 @@
     }
 
     /* =========================================================================
-       COMMON TYPOGRAPHY, BUTTONS & INPUTS
+       COMMON LAYOUT, TYPOGRAPHY, BUTTONS & INPUTS
        ========================================================================= */
     .section-stack {
       display: flex;
@@ -316,7 +315,6 @@
     .text-amber { color: var(--accent-amber) !important; }
     .text-emerald { color: var(--accent-emerald) !important; }
 
-    /* Pill Buttons */
     .btn-pill {
       display: inline-flex;
       align-items: center;
@@ -337,11 +335,8 @@
     .btn-pill:active { transform: scale(0.96); }
     .btn-pill.primary {
       background: #ffffff;
-      color: #14181f;
+      color: #0f172a;
       border-color: #ffffff;
-    }
-    .btn-pill.primary:active {
-      background: rgba(255, 255, 255, 0.85);
     }
     .btn-pill.gold {
       background: rgba(232, 201, 126, 0.18);
@@ -349,8 +344,8 @@
       color: var(--accent-gold);
     }
     .btn-pill.danger {
-      background: rgba(255, 123, 114, 0.14);
-      border-color: rgba(255, 123, 114, 0.40);
+      background: rgba(251, 113, 133, 0.14);
+      border-color: rgba(251, 113, 133, 0.40);
       color: var(--accent-coral);
     }
     .btn-pill.sm {
@@ -382,11 +377,10 @@
       color: #ffffff;
     }
     .icon-btn.danger:hover, .icon-btn.danger:active {
-      background: rgba(255, 123, 114, 0.22);
+      background: rgba(251, 113, 133, 0.22);
       color: var(--accent-coral);
     }
 
-    /* Frosted Inputs & Selects */
     .glass-input, .glass-select {
       width: 100%;
       font-family: inherit;
@@ -399,9 +393,7 @@
       outline: none;
       transition: border-color 0.16s ease, background 0.16s ease;
     }
-    .glass-input::placeholder {
-      color: rgba(255, 255, 255, 0.36);
-    }
+    .glass-input::placeholder { color: rgba(255, 255, 255, 0.36); }
     .glass-input:focus, .glass-select:focus {
       border-color: rgba(255, 255, 255, 0.65);
       background: rgba(0, 0, 0, 0.42);
@@ -418,7 +410,7 @@
     }
     input[type="number"] { -moz-appearance: textfield; }
 
-    /* Signature Crisp White Progress Bar on Dark Translucent Track */
+    /* Crisp White Progress Bar on Dark Translucent Track */
     .progress-track {
       width: 100%;
       height: 8px;
@@ -433,11 +425,8 @@
       background: #ffffff;
       transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1), background 0.2s ease;
     }
-    .progress-fill.over {
-      background: var(--accent-coral);
-    }
+    .progress-fill.over { background: var(--accent-coral); }
 
-    /* Segmented Toggle */
     .segmented-toggle {
       display: inline-flex;
       padding: 3px;
@@ -459,10 +448,9 @@
     }
     .segmented-toggle button.active {
       background: #ffffff;
-      color: #14181f;
+      color: #0f172a;
     }
 
-    /* Responsive Grids */
     .grid-2 {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -475,13 +463,14 @@
     }
 
     /* =========================================================================
-       TAB 0: HOME VIEW — INTERACTIVE CALENDAR, DUE PANEL & INSIGHTS
+       TAB 0: HOME VIEW — ROCK-SOLID 7-COLUMN DUE CALENDAR & INSIGHTS
        ========================================================================= */
     .home-cal-weekdays {
       display: grid;
       grid-template-columns: repeat(7, minmax(0, 1fr));
-      gap: 4px;
-      margin-bottom: 6px;
+      gap: 6px;
+      width: 100%;
+      margin-bottom: 8px;
       text-align: center;
       font-size: 0.66rem;
       font-weight: 700;
@@ -492,41 +481,54 @@
     .home-cal-grid {
       display: grid;
       grid-template-columns: repeat(7, minmax(0, 1fr));
-      gap: 5px;
+      gap: 6px;
+      width: 100%;
     }
 
     .home-cal-cell {
       appearance: none;
+      -webkit-appearance: none;
+      min-height: 44px;
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 3px;
-      height: 44px;
-      border-radius: 14px;
+      padding: 4px 2px;
+      border-radius: 12px;
       border: 1px solid transparent;
-      background: rgba(255, 255, 255, 0.03);
-      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.04);
       font-family: inherit;
-      font-size: 0.84rem;
-      font-weight: 600;
       cursor: pointer;
-      transition: all 0.14s ease;
+      -webkit-tap-highlight-color: transparent;
+      transition: background 0.14s ease, transform 0.12s ease, border-color 0.14s ease;
     }
     .home-cal-cell.blank {
       background: transparent;
+      border-color: transparent;
       pointer-events: none;
+      cursor: default;
+    }
+    .home-cal-num {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #f1f5f9;
+      line-height: 1;
     }
     .home-cal-cell.today {
-      border-color: rgba(255, 255, 255, 0.52);
+      border-color: rgba(255, 255, 255, 0.56);
       background: rgba(255, 255, 255, 0.10);
     }
     .home-cal-cell.selected {
       background: #ffffff;
-      color: #14181f;
       border-color: #ffffff;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.32);
+    }
+    .home-cal-cell.selected .home-cal-num {
+      color: #0f172a;
       font-weight: 800;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.30);
     }
     .home-cal-cell:active:not(.blank) {
       transform: scale(0.93);
@@ -538,18 +540,21 @@
       justify-content: center;
       gap: 3px;
       height: 6px;
+      min-height: 6px;
     }
     .home-dot {
+      display: inline-block;
       width: 5px;
       height: 5px;
       border-radius: 50%;
+      flex-shrink: 0;
     }
-    .home-dot.pending { background: var(--accent-amber); }
-    .home-dot.overdue { background: var(--accent-coral); }
-    .home-dot.paid { background: var(--accent-emerald); }
+    .home-dot.pending { background: #f59e0b; }
+    .home-dot.overdue { background: #fb7185; }
+    .home-dot.paid { background: #34d399; }
     .home-dot.income { background: #60a5fa; }
-    .home-dot.skipped { background: rgba(203, 213, 225, 0.55); }
-    .home-cal-cell.selected .home-dot.skipped { background: rgba(20, 24, 31, 0.45); }
+    .home-dot.skipped { background: rgba(148, 163, 184, 0.55); }
+    .home-cal-cell.selected .home-dot.skipped { background: rgba(15, 23, 42, 0.40); }
 
     .home-due-divider {
       height: 1px;
@@ -579,7 +584,7 @@
     }
 
     /* =========================================================================
-       TAB 1: EXPENSES & CHARTS
+       TAB 1: EXPENSES & INLINE SVG CHARTS
        ========================================================================= */
     .budget-top-row {
       display: flex;
@@ -608,16 +613,13 @@
       padding: 6px 0 4px;
     }
 
-    /* Horizontally scrollable wrapper for vertical bar chart when many categories */
     .vbar-scroll-wrap {
       width: 100%;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       padding-bottom: 4px;
     }
-    .vbar-scroll-wrap::-webkit-scrollbar {
-      height: 4px;
-    }
+    .vbar-scroll-wrap::-webkit-scrollbar { height: 4px; }
     .vbar-scroll-wrap::-webkit-scrollbar-thumb {
       background: rgba(255, 255, 255, 0.22);
       border-radius: 99px;
@@ -713,7 +715,7 @@
       border: 1px solid rgba(255, 255, 255, 0.18);
       color: var(--text-secondary);
     }
-    .type-badge.income { color: var(--accent-emerald); border-color: rgba(74, 222, 128, 0.35); background: rgba(74, 222, 128, 0.10); }
+    .type-badge.income { color: var(--accent-emerald); border-color: rgba(52, 211, 153, 0.35); background: rgba(52, 211, 153, 0.10); }
     .type-badge.saving { color: var(--accent-gold); border-color: rgba(232, 201, 126, 0.35); background: rgba(232, 201, 126, 0.10); }
     .type-badge.expense { color: rgba(255, 255, 255, 0.78); background: rgba(255, 255, 255, 0.07); }
 
@@ -763,7 +765,6 @@
       font-size: 0.66rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.03em;
       color: var(--text-muted);
       pointer-events: none;
     }
@@ -823,13 +824,13 @@
     }
     .status-pill:active { transform: scale(0.94); }
     .status-pill.pending {
-      background: rgba(245, 197, 66, 0.15);
-      border-color: rgba(245, 197, 66, 0.40);
+      background: rgba(245, 158, 11, 0.16);
+      border-color: rgba(245, 158, 11, 0.42);
       color: var(--accent-amber);
     }
     .status-pill.paid {
-      background: rgba(74, 222, 128, 0.15);
-      border-color: rgba(74, 222, 128, 0.40);
+      background: rgba(52, 211, 153, 0.16);
+      border-color: rgba(52, 211, 153, 0.42);
       color: var(--accent-emerald);
     }
     .status-pill.skipped {
@@ -840,7 +841,7 @@
     }
 
     /* =========================================================================
-       TAB 3: OVERVIEW & YEARLY TREND CHART
+       TAB 3: OVERVIEW & 12-MONTH TREND CHART
        ========================================================================= */
     .trend-callout {
       display: flex;
@@ -875,7 +876,7 @@
     }
     .trend-month-btn.active {
       background: #ffffff;
-      color: #14181f;
+      color: #0f172a;
       border-color: #ffffff;
       font-weight: 800;
     }
@@ -935,12 +936,10 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.28);
       transition: transform 0.2s ease;
     }
-    .ios-switch.on::after {
-      transform: translateX(20px);
-    }
+    .ios-switch.on::after { transform: translateX(20px); }
 
     /* =========================================================================
-       FLOATING FROSTED GLASS BOTTOM NAVIGATION BAR
+       FLOATING FROSTED GLASS BOTTOM NAVIGATION BAR (5 TABS)
        ========================================================================= */
     .bottom-nav-wrap {
       position: fixed;
@@ -957,7 +956,7 @@
       gap: 4px;
       padding: 6px;
       border-radius: 24px;
-      background: rgba(22, 26, 32, 0.74);
+      background: rgba(22, 26, 32, 0.78);
       backdrop-filter: blur(26px) saturate(160%);
       -webkit-backdrop-filter: blur(26px) saturate(160%);
       border: 1px solid rgba(255, 255, 255, 0.18);
@@ -982,12 +981,12 @@
     }
     .nav-item.active {
       background: #ffffff;
-      color: #14181f;
+      color: #0f172a;
       font-weight: 800;
     }
 
     /* =========================================================================
-       MODALS & CALENDAR PICKER
+       MODALS & MONTH/YEAR CALENDAR PICKER
        ========================================================================= */
     .modal-backdrop {
       position: fixed;
@@ -1001,9 +1000,7 @@
       justify-content: center;
       padding: 16px;
     }
-    .modal-backdrop.open {
-      display: flex;
-    }
+    .modal-backdrop.open { display: flex; }
     @media (min-width: 540px) {
       .modal-backdrop { align-items: center; }
     }
@@ -1014,7 +1011,7 @@
       max-width: 440px;
       max-height: 86vh;
       overflow-y: auto;
-      background: rgba(28, 32, 38, 0.90);
+      background: rgba(28, 32, 38, 0.92);
       backdrop-filter: blur(28px) saturate(150%);
       -webkit-backdrop-filter: blur(28px) saturate(150%);
       border: 1px solid rgba(255, 255, 255, 0.20);
@@ -1037,9 +1034,7 @@
       color: #ffffff;
     }
 
-    .form-field {
-      margin-bottom: 12px;
-    }
+    .form-field { margin-bottom: 12px; }
     .form-field label {
       display: block;
       font-size: 0.74rem;
@@ -1070,7 +1065,6 @@
       flex-shrink: 0;
     }
 
-    /* Calendar Picker Grid */
     .cal-year-bar {
       display: flex;
       align-items: center;
@@ -1092,7 +1086,6 @@
       gap: 8px;
     }
     .cal-month-cell {
-      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -1112,7 +1105,7 @@
     }
     .cal-month-cell.selected {
       background: #ffffff;
-      color: #14181f;
+      color: #0f172a;
       border-color: #ffffff;
     }
     .cal-data-dot {
@@ -1121,9 +1114,7 @@
       border-radius: 50%;
       background: var(--accent-emerald);
     }
-    .cal-month-cell.selected .cal-data-dot {
-      background: #14181f;
-    }
+    .cal-month-cell.selected .cal-data-dot { background: #0f172a; }
 
     /* Toast Notification */
     .toast-stack {
@@ -1157,12 +1148,9 @@
       transition: all 0.2s ease;
       text-align: center;
     }
-    .toast.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .toast.show { opacity: 1; transform: translateY(0); }
     .toast.coral {
-      border-color: rgba(255, 123, 114, 0.6);
+      border-color: rgba(251, 113, 133, 0.6);
       color: var(--accent-coral);
     }
 
@@ -1187,7 +1175,25 @@
   <div class="app-shell">
 
     <!-- ===================================================================
-         TAB 0: HOME VIEW (DEFAULT LANDING TAB — CALENDAR + DUE PANEL + INSIGHTS)
+         STICKY HEADER: LARGE "KOSAH" + | NOV 2026 WITH INVISIBLE NAV ZONES
+         =================================================================== -->
+    <header class="app-header">
+      <button id="btn-brand-today" type="button" class="brand-title-btn" aria-label="Kosah — jump to current month">KOSAH</button>
+      <div class="month-nav-group">
+        <button id="btn-prev-month-zone" type="button" class="invisible-nav-zone" aria-label="Previous Month"></button>
+        <button id="btn-open-calendar" type="button" class="month-pill-btn" aria-label="Select Month and Year">
+          <span class="month-pill-bar"></span>
+          <span class="month-pill-text">
+            <span id="header-month-short" class="m-bold">NOV</span>
+            <span id="header-year" class="y-thin">2026</span>
+          </span>
+        </button>
+        <button id="btn-next-month-zone" type="button" class="invisible-nav-zone" aria-label="Next Month"></button>
+      </div>
+    </header>
+
+    <!-- ===================================================================
+         TAB 0: HOME VIEW (DEFAULT — DUE CALENDAR + DUE PANEL + 4 INSIGHTS)
          =================================================================== -->
     <section id="panel-home" class="tab-panel active">
       <!-- Top Interactive Monthly Calendar & Selected Day Due Panel -->
@@ -1216,9 +1222,7 @@
             <span class="v-bar gold"></span>
             <span id="home-selected-day-title" class="card-title" style="font-size:0.84rem;">25 NOV 2026 • 0 DUE</span>
           </div>
-          <div style="display:flex; gap:6px;">
-            <button id="btn-home-add-exp" type="button" class="btn-pill sm">+ Expense</button>
-          </div>
+          <button id="btn-home-add-exp" type="button" class="btn-pill sm">+ Expense</button>
         </div>
 
         <div id="home-due-list" class="section-stack" style="gap:8px;"></div>
@@ -1228,7 +1232,7 @@
         </div>
       </div>
 
-      <!-- Bottom Section: Financial Insights -->
+      <!-- Bottom Section: 4 Financial Insights -->
       <div class="section-stack" style="gap:12px;">
         <!-- Insight 1: Monthly Budget Health -->
         <div class="insight-card">
@@ -1261,21 +1265,21 @@
               <span class="v-bar amber"></span>
               <span class="card-title" style="font-size:0.82rem;">UPCOMING &amp; <span class="thin">PENDING</span></span>
             </div>
-            <span id="ins-pending-count" class="type-badge" style="color:var(--accent-amber); border-color:rgba(245,197,66,0.35);">0 PENDING</span>
+            <span id="ins-pending-count" class="type-badge" style="color:var(--accent-amber); border-color:rgba(245,158,11,0.35);">0 PENDING</span>
           </div>
           <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
             <div>
               <div id="ins-pending-total" style="font-size:1.25rem; font-weight:800;">₹0</div>
               <div class="label-muted" style="margin-top:2px;">total unpaid bills</div>
             </div>
-            <div id="ins-next-due-box" style="text-align:right; max-width:56%;">
+            <div style="text-align:right; max-width:56%;">
               <div id="ins-next-due-name" style="font-size:0.84rem; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">All clear</div>
               <div id="ins-next-due-when" class="label-muted" style="margin-top:2px;">No pending due dates</div>
             </div>
           </div>
         </div>
 
-        <!-- Insight 3 & 4: Cashflow Snapshot + Top Spending Category -->
+        <!-- Insight 3 & 4: Cashflow + Top Spend -->
         <div class="grid-2" style="gap:12px;">
           <div class="insight-card">
             <div class="accent-bar-wrap" style="margin-bottom:8px;">
@@ -1304,9 +1308,100 @@
     </section>
 
     <!-- ===================================================================
-         TAB 1: EXPENSES
+         TAB 1: EXPENSES (BUDGET, CHARTS [DONUT / VERTICAL BAR], HISTORY)
          =================================================================== -->
     <section id="panel-expenses" class="tab-panel">
+      <!-- Monthly Budget Card -->
+      <div class="glass-card">
+        <div class="card-header" style="margin-bottom:10px;">
+          <div class="accent-bar-wrap">
+            <span class="v-bar"></span>
+            <span class="card-title">MONTHLY <span class="thin">BUDGET</span></span>
+          </div>
+          <button id="btn-edit-budget" type="button" class="btn-pill sm">Edit Budget</button>
+        </div>
+
+        <div class="budget-top-row">
+          <div>
+            <div id="exp-budget-remaining" class="big-stat">₹0</div>
+            <div id="exp-budget-status-lbl" class="label-muted" style="margin-top:3px;">remaining this month</div>
+          </div>
+          <div id="exp-budget-pct" style="font-size:1.15rem; font-weight:800;">0%</div>
+        </div>
+
+        <div class="progress-track">
+          <div id="exp-budget-bar" class="progress-fill" style="width:0%;"></div>
+        </div>
+
+        <div class="budget-meta-row" style="margin-bottom:14px;">
+          <span>Spent: <strong id="exp-total-spent">₹0</strong></span>
+          <span>Limit: <strong id="exp-total-limit">₹0</strong></span>
+        </div>
+
+        <div class="grid-2">
+          <button id="btn-new-expense" type="button" class="btn-pill primary">+ New Expense</button>
+          <button id="btn-manage-categories" type="button" class="btn-pill">Categories</button>
+        </div>
+      </div>
+
+      <!-- Category Breakdown Chart Card -->
+      <div class="glass-card">
+        <div class="card-header">
+          <div class="accent-bar-wrap">
+            <span class="v-bar gold"></span>
+            <span class="card-title">CATEGORY <span class="thin">BREAKDOWN</span></span>
+          </div>
+          <div class="segmented-toggle" role="tablist" aria-label="Chart Type">
+            <button id="btn-chart-donut" type="button" class="active">Donut</button>
+            <button id="btn-chart-bar" type="button">Bar</button>
+          </div>
+        </div>
+        <div id="exp-chart-stage" class="chart-stage"></div>
+        <div id="exp-cat-legend" class="cat-legend-list"></div>
+      </div>
+
+      <!-- Expense History Card -->
+      <div class="glass-card">
+        <div class="card-header">
+          <div class="accent-bar-wrap">
+            <span class="v-bar"></span>
+            <span class="card-title">EXPENSE <span class="thin">HISTORY</span></span>
+          </div>
+          <span id="exp-count-badge" class="type-badge">0 ITEMS</span>
+        </div>
+        <div id="exp-list" class="section-stack" style="gap:8px;"></div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         TAB 2: BILLS & CASHFLOW
+         =================================================================== -->
+    <section id="panel-bills" class="tab-panel">
+      <!-- Empty State Card (when selected month has no bills yet) -->
+      <div id="bills-empty-card" class="glass-card" style="display:none; text-align:center;">
+        <div class="card-title" id="bills-empty-heading" style="margin-bottom:8px;">NO SHEET FOR THIS MONTH</div>
+        <p class="label-muted" style="margin-bottom:16px; line-height:1.5;">
+          Generate a blank bills &amp; cashflow sheet from your master template to start tracking amounts, due dates, and statuses.
+        </p>
+        <button id="btn-init-bills-month" type="button" class="btn-pill primary full">Generate Blank Sheet</button>
+      </div>
+
+      <!-- Active Bills Wrap -->
+      <div id="bills-active-wrap" class="section-stack">
+        <!-- Cashflow Summary Card -->
+        <div class="glass-card">
+          <div class="card-header" style="margin-bottom:12px;">
+            <div class="accent-bar-wrap">
+              <span class="v-bar emerald"></span>
+              <span class="card-title">CASHFLOW <span class="thin">SUMMARY</span></span>
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="summary-tile">
+              <div class="label-muted">Total Income</div>
+              <div id="bill-sum-income" class="val text-emerald">₹0</div>
+            </div>
+            <div class="summary-tile">
               <div class="label-muted">Total Spend (Bills + Exp)</div>
               <div id="bill-sum-outflow" class="val text-coral">₹0</div>
             </div>
@@ -1333,7 +1428,7 @@
     </section>
 
     <!-- ===================================================================
-         TAB 3: OVERVIEW
+         TAB 3: OVERVIEW (UNPAID ALERTS, SNAPSHOT, 12-MONTH TREND)
          =================================================================== -->
     <section id="panel-overview" class="tab-panel">
       <!-- Unpaid Bills Alert -->
@@ -1406,7 +1501,7 @@
     </section>
 
     <!-- ===================================================================
-         TAB 4: VAULT (100% LOCAL DATA, MOVE MONTH DATA, NO ICON GENERATOR)
+         TAB 4: VAULT (ROLLOVER, MOVE MONTH, LOCAL DATA FILE, RESET)
          =================================================================== -->
     <section id="panel-vault" class="tab-panel">
       <!-- Auto-Rollover Setting -->
@@ -1427,7 +1522,7 @@
         <button id="btn-generate-next-now" type="button" class="btn-pill full">Generate Next Month Sheet</button>
       </div>
 
-      <!-- NEW: Move Month Data Card -->
+      <!-- Move Month Data Card -->
       <div class="glass-card">
         <div class="card-header" style="margin-bottom:10px;">
           <div class="accent-bar-wrap">
@@ -1456,9 +1551,7 @@
           </div>
         </div>
 
-        <button id="btn-move-month-data" type="button" class="btn-pill gold full">
-          Move Data
-        </button>
+        <button id="btn-move-month-data" type="button" class="btn-pill gold full">Move Data</button>
       </div>
 
       <!-- Local Data File & Offline Exports Card -->
@@ -1498,19 +1591,20 @@
             Save / Sync Local File
           </button>
           <div class="grid-2">
-            <button id="btn-export-json" type="button" class="btn-pill">Download JSON Backup</button>
+            <button id="btn-export-json" type="button" class="btn-pill">Download JSON</button>
             <label for="input-import-json" class="btn-pill" style="cursor:pointer;">
-              Import JSON Restore
+              Import JSON
               <input id="input-import-json" type="file" accept=".json,application/json" style="display:none;" />
             </label>
           </div>
           <div class="grid-2">
             <button id="btn-export-csv" type="button" class="btn-pill">Export CSV</button>
-            <button id="btn-export-txt" type="button" class="btn-pill">Export .TXT Summary</button>
+            <button id="btn-export-txt" type="button" class="btn-pill">Export .TXT</button>
           </div>
+          <button id="btn-load-demo" type="button" class="btn-pill gold full">Load Demo Data</button>
         </div>
         <p class="label-muted" style="margin-top:10px; line-height:1.45;">
-          100% private on-device storage. Zero data is ever sent to GitHub. On iPhone/iPad, tap <strong>Save / Sync Local File</strong> or <strong>Download JSON Backup</strong> and choose <strong>Save to Files → On My iPhone</strong> to access your data anytime outside the app.
+          100% private on-device storage. Zero data is ever sent to GitHub. On iPhone/iPad, tap <strong>Save / Sync Local File</strong> or <strong>Download JSON</strong> and choose <strong>Save to Files → On My iPhone</strong> to access your data anytime outside the app.
         </p>
       </div>
 
@@ -1526,7 +1620,7 @@
           <button id="btn-reset-month" type="button" class="btn-pill danger full">
             Reset This Month (NOV 2026)
           </button>
-          <button id="btn-reset-complete" type="button" class="btn-pill danger full" style="background:rgba(255,123,114,0.22);">
+          <button id="btn-reset-complete" type="button" class="btn-pill danger full" style="background:rgba(251,113,133,0.22);">
             Reset Complete Data
           </button>
         </div>
@@ -1535,7 +1629,7 @@
   </div>
 
   <!-- =====================================================================
-       FLOATING FROSTED GLASS BOTTOM NAVIGATION BAR
+       FLOATING FROSTED GLASS BOTTOM NAVIGATION BAR (5 TABS)
        ===================================================================== -->
   <nav class="bottom-nav-wrap" aria-label="Main Navigation">
     <div class="bottom-nav">
@@ -1718,20 +1812,20 @@
       </form>
     </div>
 
-    <!-- 7. Universal Confirmation Modal (with optional future-template checkbox) -->
+    <!-- 7. Universal Confirmation Modal -->
     <div id="modal-confirm" class="modal-sheet">
       <div class="modal-header" style="margin-bottom:10px;">
         <span id="confirm-title" class="modal-title">Confirm Action</span>
         <button type="button" class="icon-btn" data-close-modal aria-label="Close">✕</button>
       </div>
-      <p id="confirm-message" class="label-muted" style="font-size:0.86rem; line-height:1.5; color:rgba(248,250,252,0.80);"></p>
+      <p id="confirm-message" class="label-muted" style="font-size:0.86rem; line-height:1.5; color:rgba(241,245,249,0.82);"></p>
       <label id="confirm-future-wrap" class="checkbox-card" style="display:none;">
         <input id="confirm-future-check" type="checkbox" />
         <span>Also remove from future auto-generated months</span>
       </label>
       <div style="display:flex; gap:10px; margin-top:16px;">
         <button type="button" class="btn-pill full" data-close-modal>Cancel</button>
-        <button id="btn-confirm-proceed" type="button" class="btn-pill danger full" style="background:rgba(255,123,114,0.22);">Confirm</button>
+        <button id="btn-confirm-proceed" type="button" class="btn-pill danger full" style="background:rgba(251,113,133,0.22);">Confirm</button>
       </div>
     </div>
 
@@ -1745,7 +1839,7 @@
       'use strict';
 
       /* -------------------------------------------------------------------
-         CONSTANTS & DEFAULT TEMPLATE (EXACTLY 1 ITEM PER SECTION)
+         CONSTANTS & FACTORY DEFAULT STATE (1 ITEM PER SECTION)
          ------------------------------------------------------------------- */
       const STORAGE_KEY = 'kosah_local_data_v1';
       const MONTHS_SHORT = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
@@ -1763,12 +1857,12 @@
             defaultMonthlyBudget: 35000
           },
           categories: [
-            { id: 'cat_groceries', name: 'Groceries', color: '#4ade80' },
+            { id: 'cat_groceries', name: 'Groceries', color: '#34d399' },
             { id: 'cat_dining', name: 'Dining', color: '#e8c97e' },
             { id: 'cat_transport', name: 'Transport', color: '#60a5fa' },
             { id: 'cat_shopping', name: 'Shopping', color: '#c084fc' },
             { id: 'cat_utilities', name: 'Utilities', color: '#38bdf8' },
-            { id: 'cat_health', name: 'Health', color: '#ff7b72' },
+            { id: 'cat_health', name: 'Health', color: '#fb7185' },
             { id: 'cat_misc', name: 'Misc', color: '#cbd5e1' }
           ],
           billTemplate: [
@@ -1789,7 +1883,7 @@
       let state = loadState();
       let selectedYear = now.getFullYear();
       let selectedMonth = now.getMonth(); // 0..11
-      let selectedDay = now.getDate();    // 1..31 for Home Calendar
+      let selectedDay = now.getDate();    // 1..31
       let pickerYear = selectedYear;
       let activeTab = 'home';
       let chartMode = 'donut'; // 'donut' | 'bar'
@@ -1807,6 +1901,17 @@
 
       function monthKey(y, m) {
         return `${y}-${String(m + 1).padStart(2, '0')}`;
+      }
+
+      function daysInMonth(y, m) {
+        return new Date(y, m + 1, 0).getDate();
+      }
+
+      function parseDueDay(val) {
+        if (val === null || val === undefined || val === '') return null;
+        const n = parseInt(val, 10);
+        if (isNaN(n) || n < 1 || n > 31) return null;
+        return n;
       }
 
       function formatINR(val) {
@@ -1878,17 +1983,6 @@
             status: 'pending'
           }))
         }));
-      }
-
-      function parseDueDay(val) {
-        if (val === null || val === undefined || val === '') return null;
-        const n = parseInt(val, 10);
-        if (isNaN(n) || n < 1 || n > 31) return null;
-        return n;
-      }
-
-      function daysInMonth(y, m) {
-        return new Date(y, m + 1, 0).getDate();
       }
 
       function initMonthSheet(y, m, withBills = true) {
@@ -1988,7 +2082,7 @@
       }
 
       /* -------------------------------------------------------------------
-         TOAST & MODAL SYSTEM (NO alert() / confirm())
+         TOAST & MODAL SYSTEM (ZERO alert() / confirm())
          ------------------------------------------------------------------- */
       function showToast(msg, isError = false) {
         const stack = document.getElementById('toast-stack');
@@ -2037,7 +2131,7 @@
       }
 
       /* -------------------------------------------------------------------
-         HEADER & CALENDAR PICKER
+         HEADER & MONTH/YEAR PICKER
          ------------------------------------------------------------------- */
       function renderHeader() {
         document.getElementById('header-month-short').textContent = MONTHS_SHORT[selectedMonth];
@@ -2061,7 +2155,7 @@
       }
 
       /* -------------------------------------------------------------------
-         TAB 0: HOME VIEW — INTERACTIVE CALENDAR, DUE PANEL & INSIGHTS
+         TAB 0: HOME VIEW — DUE CALENDAR, DUE PANEL & 4 INSIGHTS
          ------------------------------------------------------------------- */
       function renderHomeTab() {
         const key = monthKey(selectedYear, selectedMonth);
@@ -2076,7 +2170,7 @@
         const isPastMonth = (selectedYear < today.getFullYear()) || (selectedYear === today.getFullYear() && selectedMonth < today.getMonth());
         const todayDate = today.getDate();
 
-        // Map all bills with a valid dueDay to clamped calendar day (1..totalDays)
+        // Map bills with dueDay (clamped to totalDays) to calendar days
         const dueByDay = {};
         const pendingNonIncome = [];
         if (md && Array.isArray(md.bills)) {
@@ -2095,11 +2189,11 @@
           });
         }
 
-        // Render 7-column calendar grid
+        // Render 7-column calendar cells
         const calGrid = document.getElementById('home-cal-grid');
         let cellsHtml = '';
         for (let b = 0; b < firstWeekday; b++) {
-          cellsHtml += `<div class="home-cal-cell blank"></div>`;
+          cellsHtml += `<div class="home-cal-cell blank" aria-hidden="true"></div>`;
         }
         for (let day = 1; day <= totalDays; day++) {
           const isToday = isCurrentMonth && day === todayDate;
@@ -2117,7 +2211,7 @@
 
           cellsHtml += `
             <button type="button" class="home-cal-cell${isToday ? ' today' : ''}${isSelected ? ' selected' : ''}" data-home-day="${day}" aria-label="${day} ${MONTHS_SHORT[selectedMonth]} ${selectedYear}">
-              <span>${day}</span>
+              <span class="home-cal-num">${day}</span>
               <span class="home-cal-dots">${dotsHtml}</span>
             </button>
           `;
@@ -2164,7 +2258,7 @@
           }).join('');
         }
 
-        // Show expenses logged on selected date if any
+        // Expenses logged on selected date
         const selIso = `${selectedYear}-${String(selectedMonth + 1).padStart(2, '0')}-${String(selectedDay).padStart(2, '0')}`;
         const dayExpenses = (md && Array.isArray(md.expenses) ? md.expenses : []).filter(e => e.date === selIso);
         const dayExpWrap = document.getElementById('home-day-expenses-wrap');
@@ -2236,7 +2330,7 @@
           nextWhenEl.textContent = pendingNonIncome.length ? 'No due date set' : 'No pending bills';
         } else {
           const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-          let target = withDue.find(p => new Date(selectedYear, selectedMonth, p.clampedDay) >= todayStart) || withDue[0];
+          const target = withDue.find(p => new Date(selectedYear, selectedMonth, p.clampedDay) >= todayStart) || withDue[0];
           const targetDate = new Date(selectedYear, selectedMonth, target.clampedDay);
           const diffDays = Math.round((targetDate - todayStart) / 86400000);
           nextNameEl.textContent = `Next: ${target.item.name}`;
@@ -2246,7 +2340,7 @@
           else nextWhenEl.textContent = `${Math.abs(diffDays)}d overdue (${target.clampedDay} ${MONTHS_SHORT[selectedMonth]})`;
         }
 
-        // Insight 3: Cashflow & Savings Snapshot
+        // Insight 3: Cashflow Snapshot
         const saveRate = cf.income > 0 ? Math.round((cf.saving / cf.income) * 100) : 0;
         const insNetEl = document.getElementById('ins-cf-net');
         insNetEl.textContent = formatINR(cf.net);
@@ -2271,6 +2365,107 @@
           document.getElementById('ins-top-cat-name').textContent = '—';
           document.getElementById('ins-top-cat-amt').textContent = '₹0';
           document.getElementById('ins-top-cat-pct').textContent = 'No expenses yet';
+        }
+      }
+
+      /* -------------------------------------------------------------------
+         TAB 1: EXPENSES & INLINE SVG CHARTS (DONUT & VERTICAL BAR)
+         ------------------------------------------------------------------- */
+      function renderExpensesTab() {
+        const key = monthKey(selectedYear, selectedMonth);
+        const md = state.months[key];
+        const budget = md ? (Number(md.budget) || 0) : (state.settings.defaultMonthlyBudget || 0);
+        const expenses = md && Array.isArray(md.expenses) ? md.expenses : [];
+        const totalSpent = expenses.reduce((s, e) => s + (Number(e.amount) || 0), 0);
+        const remaining = budget - totalSpent;
+        const pct = budget > 0 ? Math.round((totalSpent / budget) * 100) : (totalSpent > 0 ? 100 : 0);
+
+        const remEl = document.getElementById('exp-budget-remaining');
+        remEl.textContent = formatINR(Math.abs(remaining));
+        remEl.className = `big-stat${remaining < 0 ? ' text-coral' : ''}`;
+        document.getElementById('exp-budget-status-lbl').textContent = remaining < 0
+          ? `over budget for ${MONTHS_SHORT[selectedMonth]} ${selectedYear}`
+          : `remaining for ${MONTHS_SHORT[selectedMonth]} ${selectedYear}`;
+
+        const pctEl = document.getElementById('exp-budget-pct');
+        pctEl.textContent = `${pct}%`;
+        pctEl.className = remaining < 0 ? 'text-coral' : '';
+
+        const barEl = document.getElementById('exp-budget-bar');
+        barEl.style.width = `${Math.min(100, Math.max(0, pct))}%`;
+        barEl.className = `progress-fill${remaining < 0 ? ' over' : ''}`;
+
+        document.getElementById('exp-total-spent').textContent = formatINR(totalSpent);
+        document.getElementById('exp-total-limit').textContent = formatINR(budget);
+
+        // Category breakdown
+        const catMap = {};
+        expenses.forEach(e => {
+          catMap[e.categoryId] = (catMap[e.categoryId] || 0) + (Number(e.amount) || 0);
+        });
+        const breakdown = Object.entries(catMap)
+          .map(([catId, amount]) => {
+            const cat = state.categories.find(c => c.id === catId) || { name: 'Other', color: '#cbd5e1' };
+            return {
+              id: catId,
+              name: cat.name,
+              color: cat.color,
+              amount,
+              pct: totalSpent > 0 ? (amount / totalSpent) * 100 : 0
+            };
+          })
+          .sort((a, b) => b.amount - a.amount);
+
+        const stage = document.getElementById('exp-chart-stage');
+        const legend = document.getElementById('exp-cat-legend');
+        if (breakdown.length === 0) {
+          stage.innerHTML = `<div class="empty-msg">No expenses logged for ${MONTHS_SHORT[selectedMonth]} ${selectedYear} yet.</div>`;
+          legend.innerHTML = '';
+        } else {
+          stage.innerHTML = chartMode === 'donut'
+            ? buildDonutSvg(breakdown, totalSpent)
+            : buildVerticalBarSvg(breakdown);
+          legend.innerHTML = breakdown.map(b => `
+            <div class="cat-legend-item">
+              <div style="display:flex; align-items:center; gap:9px; min-width:0;">
+                <span class="cat-dot" style="background:${b.color};"></span>
+                <span style="font-size:0.86rem; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${esc(b.name)}</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:10px; flex-shrink:0;">
+                <span class="label-muted">${Math.round(b.pct)}%</span>
+                <strong style="font-size:0.88rem;">${formatINR(b.amount)}</strong>
+              </div>
+            </div>
+          `).join('');
+        }
+
+        // Expense history list
+        document.getElementById('exp-count-badge').textContent = `${expenses.length} ${expenses.length === 1 ? 'ITEM' : 'ITEMS'}`;
+        const listEl = document.getElementById('exp-list');
+        if (expenses.length === 0) {
+          listEl.innerHTML = `<div class="empty-msg">Tap <strong>+ New Expense</strong> to record your first spend.</div>`;
+        } else {
+          const sorted = [...expenses].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+          listEl.innerHTML = sorted.map(e => {
+            const cat = state.categories.find(c => c.id === e.categoryId) || { name: 'Other', color: '#cbd5e1' };
+            return `
+              <div class="glass-row expense-row">
+                <div class="expense-main">
+                  <span class="cat-dot" style="background:${cat.color};"></span>
+                  <div style="min-width:0;">
+                    <div class="expense-title">${esc(cat.name)}${e.note ? ` · ${esc(e.note)}` : ''}</div>
+                    <div class="expense-sub">${esc(e.date || '')}</div>
+                  </div>
+                </div>
+                <div class="expense-right">
+                  <span class="expense-amount">${formatINR(e.amount)}</span>
+                  <button type="button" class="icon-btn danger" data-del-exp="${e.id}" aria-label="Delete expense">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  </button>
+                </div>
+              </div>
+            `;
+          }).join('');
         }
       }
 
@@ -2314,7 +2509,6 @@
         const baseY = 176;
         const maxH = baseY - topY;
 
-        // Center columns neatly when there are few categories
         const totalSlotsW = count * slotW;
         const startX = (svgW - totalSlotsW) / 2;
 
@@ -2452,14 +2646,13 @@
       }
 
       /* -------------------------------------------------------------------
-         TAB 3: OVERVIEW + 12-MONTH YEARLY COMPARISON SVG CHART
+         TAB 3: OVERVIEW & 12-MONTH YEARLY COMPARISON SVG CHART
          ------------------------------------------------------------------- */
       function renderOverviewTab() {
         const key = monthKey(selectedYear, selectedMonth);
         const md = state.months[key];
         const cf = computeCashflow(md);
 
-        // 1. Unpaid Bills Alert
         const pending = [];
         if (md && Array.isArray(md.bills)) {
           md.bills.forEach(sec => {
@@ -2488,7 +2681,6 @@
           `).join('') + (pending.length > 5 ? `<div class="label-muted" style="text-align:center;">+ ${pending.length - 5} more pending</div>` : '');
         }
 
-        // 2. Monthly Cashflow Snapshot
         const saveRate = cf.income > 0 ? Math.round((cf.saving / cf.income) * 100) : 0;
         document.getElementById('ov-savings-rate-pill').textContent = `${saveRate}% SAVED`;
         document.getElementById('ov-snap-income').textContent = formatINR(cf.income);
@@ -2499,7 +2691,6 @@
         snapNet.textContent = formatINR(cf.net);
         snapNet.className = `val ${cf.net < 0 ? 'text-coral' : 'text-emerald'}`;
 
-        // 3. 12-Month Yearly Comparison SVG Chart
         document.getElementById('ov-trend-year').textContent = String(selectedYear);
         const series = [];
         for (let m = 0; m < 12; m++) {
@@ -2534,8 +2725,8 @@
         const dots = series.map((s, i) => {
           const isFocus = i === trendFocusMonth;
           return `
-            <circle cx="${spendPts[i][0].toFixed(1)}" cy="${spendPts[i][1].toFixed(1)}" r="${isFocus ? 4.5 : 2.4}" fill="#ffffff" stroke="${isFocus ? '#ff7b72' : 'none'}" stroke-width="2" />
-            <circle cx="${incomePts[i][0].toFixed(1)}" cy="${incomePts[i][1].toFixed(1)}" r="${isFocus ? 4 : 2}" fill="#4ade80" opacity="${isFocus ? 1 : 0.75}" />
+            <circle cx="${spendPts[i][0].toFixed(1)}" cy="${spendPts[i][1].toFixed(1)}" r="${isFocus ? 4.5 : 2.4}" fill="#ffffff" stroke="${isFocus ? '#fb7185' : 'none'}" stroke-width="2" />
+            <circle cx="${incomePts[i][0].toFixed(1)}" cy="${incomePts[i][1].toFixed(1)}" r="${isFocus ? 4 : 2}" fill="#34d399" opacity="${isFocus ? 1 : 0.75}" />
           `;
         }).join('');
 
@@ -2552,7 +2743,7 @@
             <line x1="${padX}" y1="${padTop + chartH}" x2="${w - padX}" y2="${padTop + chartH}" stroke="rgba(255,255,255,0.16)" stroke-width="1" />
             <line x1="${focusX}" y1="${padTop - 4}" x2="${focusX}" y2="${padTop + chartH}" stroke="rgba(255,255,255,0.28)" stroke-dasharray="3 3" stroke-width="1" />
             <path d="${spendArea}" fill="url(#spendAreaGrad)" />
-            <path d="${incomePath}" fill="none" stroke="#4ade80" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round" stroke-linejoin="round" opacity="0.88" />
+            <path d="${incomePath}" fill="none" stroke="#34d399" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round" stroke-linejoin="round" opacity="0.88" />
             <path d="${spendPath}" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
             ${dots}
             <text x="${padX}" y="${h - 4}" fill="rgba(226,232,240,0.52)" font-size="9" font-weight="600">JAN</text>
@@ -2567,7 +2758,7 @@
       }
 
       /* -------------------------------------------------------------------
-         TAB 4: VAULT, MOVE MONTH DATA & LOCAL FILE LINK
+         TAB 4: VAULT, MOVE MONTH DATA, EXPORTS & DEMO DATA
          ------------------------------------------------------------------- */
       function populateMoveMonthSelectors() {
         const fromM = document.getElementById('move-from-month');
@@ -2592,7 +2783,6 @@
         fromY.innerHTML = yearOpts;
         toY.innerHTML = yearOpts;
 
-        // Default From = active month; Default To = next month
         fromM.value = String(selectedMonth);
         fromY.value = String(selectedYear);
         let nextM = selectedMonth + 1;
@@ -2608,11 +2798,8 @@
         const srcData = state.months[srcKey];
         if (!srcData) return;
 
-        // Deep clone source month bucket into target month
         const cloned = JSON.parse(JSON.stringify(srcData));
-
-        // Update expense dates' YYYY-MM to match target month cleanly
-        const maxDayInDst = new Date(dstY, dstM + 1, 0).getDate();
+        const maxDayInDst = daysInMonth(dstY, dstM);
         if (Array.isArray(cloned.expenses)) {
           cloned.expenses.forEach(exp => {
             if (exp.date && /^\d{4}-\d{2}-\d{2}$/.test(exp.date)) {
@@ -2627,9 +2814,9 @@
         delete state.months[srcKey];
         saveState();
 
-        // Switch active view to target month
         selectedYear = dstY;
         selectedMonth = dstM;
+        selectedDay = Math.min(selectedDay, maxDayInDst);
         trendFocusMonth = dstM;
         renderCurrentView();
         showToast(`Moved data from ${MONTHS_SHORT[srcM]} ${srcY} to ${MONTHS_SHORT[dstM]} ${dstY}`);
@@ -2661,8 +2848,40 @@
         document.getElementById('btn-reset-month').textContent = `Reset This Month (${MONTHS_SHORT[selectedMonth]} ${selectedYear})`;
       }
 
+      function loadDemoData() {
+        const y = selectedYear;
+        const m = selectedMonth;
+        const key = monthKey(y, m);
+        const padM = String(m + 1).padStart(2, '0');
+        const maxD = daysInMonth(y, m);
+        const clamp = d => String(Math.min(d, maxD)).padStart(2, '0');
+
+        state.months[key] = {
+          initialized: true,
+          budget: 35000,
+          expenses: [
+            { id: uid('exp'), categoryId: 'cat_groceries', amount: 4250, date: `${y}-${padM}-${clamp(3)}`, note: 'Supermarket' },
+            { id: uid('exp'), categoryId: 'cat_dining', amount: 1850, date: `${y}-${padM}-${clamp(8)}`, note: 'Family dinner' },
+            { id: uid('exp'), categoryId: 'cat_transport', amount: 2400, date: `${y}-${padM}-${clamp(12)}`, note: 'Fuel refill' },
+            { id: uid('exp'), categoryId: 'cat_utilities', amount: 1950, date: `${y}-${padM}-${clamp(15)}`, note: 'Electricity & Fiber' },
+            { id: uid('exp'), categoryId: 'cat_shopping', amount: 3600, date: `${y}-${padM}-${clamp(19)}`, note: 'Apparel' },
+            { id: uid('exp'), categoryId: 'cat_health', amount: 1200, date: `${y}-${padM}-${clamp(22)}`, note: 'Pharmacy' }
+          ],
+          bills: [
+            { id: 'sec_loan', name: 'Loan', type: 'expense', items: [{ id: 'item_home', name: 'Home', dueDay: 5, amount: 32000, status: 'paid' }] },
+            { id: 'sec_cc', name: 'Credit cards', type: 'expense', items: [{ id: 'item_amex', name: 'Amex', dueDay: 15, amount: 14500, status: 'pending' }] },
+            { id: 'sec_other', name: 'Other', type: 'expense', items: [{ id: 'item_maid', name: 'Maid', dueDay: 1, amount: 4500, status: 'paid' }] },
+            { id: 'sec_saving', name: 'Saving', type: 'saving', items: [{ id: 'item_mf', name: 'Mutual Fund', dueDay: 10, amount: 25000, status: 'paid' }] },
+            { id: 'sec_income', name: 'Income', type: 'income', items: [{ id: 'item_salary', name: 'Salary', dueDay: 28, amount: 145000, status: 'pending' }] }
+          ]
+        };
+        saveState();
+        renderCurrentView();
+        showToast(`Demo data loaded for ${MONTHS_SHORT[m]} ${y}`);
+      }
+
       /* -------------------------------------------------------------------
-         EXPORTS & RESTORE
+         EXPORTS
          ------------------------------------------------------------------- */
       function downloadFile(content, filename, mime) {
         const blob = new Blob([content], { type: mime });
@@ -2677,7 +2896,7 @@
       }
 
       function exportCsv() {
-        const rows = [['Month', 'Type', 'Section/Category', 'Item/Note', 'Date', 'Amount (INR)', 'Status']];
+        const rows = [['Month', 'Type', 'Section/Category', 'Item/Note', 'Date/DueDay', 'Amount (INR)', 'Status']];
         Object.keys(state.months).sort().forEach(mk => {
           const md = state.months[mk];
           (md.expenses || []).forEach(e => {
@@ -2686,7 +2905,7 @@
           });
           (md.bills || []).forEach(sec => {
             (sec.items || []).forEach(it => {
-              rows.push([mk, `Bill (${sec.type})`, sec.name, it.name, '', it.amount || 0, it.status || 'pending']);
+              rows.push([mk, `Bill (${sec.type})`, sec.name, it.name, it.dueDay ? `Day ${it.dueDay}` : '', it.amount || 0, it.status || 'pending']);
             });
           });
         });
@@ -2718,7 +2937,8 @@
               md.bills.forEach(sec => {
                 lines.push(`  [${sec.name} - ${sec.type.toUpperCase()}]`);
                 (sec.items || []).forEach(it => {
-                  lines.push(`    - ${it.name}: ${formatINR(it.amount)} (${it.status.toUpperCase()})`);
+                  const dueStr = it.dueDay ? ` [Due: ${it.dueDay}]` : '';
+                  lines.push(`    - ${it.name}${dueStr}: ${formatINR(it.amount)} (${it.status.toUpperCase()})`);
                 });
               });
             }
@@ -2767,12 +2987,11 @@
         else if (activeTab === 'overview') {
           trendFocusMonth = selectedMonth;
           renderOverviewTab();
-        }
-        else if (activeTab === 'vault') renderVaultTab();
+        } else if (activeTab === 'vault') renderVaultTab();
       }
 
       /* -------------------------------------------------------------------
-         PWA INLINE MANIFEST (ZERO EXTERNAL DEPENDENCIES)
+         PWA INLINE MANIFEST
          ------------------------------------------------------------------- */
       function injectPwaManifest() {
         try {
@@ -2795,13 +3014,24 @@
       /* -------------------------------------------------------------------
          EVENT BINDINGS
          ------------------------------------------------------------------- */
+      function openNewExpenseModalForDay(dayNum) {
+        document.getElementById('inp-exp-cat').innerHTML = state.categories
+          .map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('');
+        const clamped = Math.min(Math.max(1, dayNum || 1), daysInMonth(selectedYear, selectedMonth));
+        document.getElementById('inp-exp-date').value = `${selectedYear}-${String(selectedMonth + 1).padStart(2, '0')}-${String(clamped).padStart(2, '0')}`;
+        document.getElementById('inp-exp-amount').value = '';
+        document.getElementById('inp-exp-note').value = '';
+        openModal('modal-expense');
+        setTimeout(() => document.getElementById('inp-exp-amount').focus(), 60);
+      }
+
       function bindEvents() {
         // Bottom Nav
         document.querySelectorAll('.nav-item').forEach(btn => {
           btn.addEventListener('click', () => switchTab(btn.dataset.tab));
         });
 
-        // Tap on "KOSAH" title -> Jump to current month (replaces refresh button)
+        // Tap "KOSAH" title -> Jump to current month & today
         document.getElementById('btn-brand-today').addEventListener('click', () => {
           const fresh = new Date();
           selectedYear = fresh.getFullYear();
@@ -2813,11 +3043,11 @@
           showToast('Jumped to current month');
         });
 
-        // Invisible limited-width flanking zones around Month & Year pill
+        // Invisible 32px flanking zones around Month & Year pill
         document.getElementById('btn-prev-month-zone').addEventListener('click', () => stepMonth(-1));
         document.getElementById('btn-next-month-zone').addEventListener('click', () => stepMonth(1));
 
-        // Header Calendar Picker
+        // Header Month/Year Calendar Picker Modal
         document.getElementById('btn-open-calendar').addEventListener('click', () => {
           pickerYear = selectedYear;
           renderCalendarPicker();
@@ -2873,20 +3103,16 @@
           }
           const sc = e.target.closest('[data-home-shortcut]');
           if (sc) {
-            if (sc.dataset.homeShortcut === 'bills') {
-              switchTab('bills');
-            } else if (sc.dataset.homeShortcut === 'expense') {
-              openNewExpenseModalForDay(selectedDay);
-            }
+            if (sc.dataset.homeShortcut === 'bills') switchTab('bills');
+            else if (sc.dataset.homeShortcut === 'expense') openNewExpenseModalForDay(selectedDay);
           }
         });
 
-        // Home View: Quick "+ Expense" button on Selected Day
         document.getElementById('btn-home-add-exp').addEventListener('click', () => {
           openNewExpenseModalForDay(selectedDay);
         });
 
-        // Modal Close
+        // Modal Close & Confirm
         document.querySelectorAll('[data-close-modal]').forEach(btn => {
           btn.addEventListener('click', closeModals);
         });
@@ -2914,22 +3140,11 @@
           }
           saveState();
           closeModals();
-          renderExpensesTab();
+          renderCurrentView();
           showToast(`Budget updated to ${formatINR(val)}`);
         });
 
         // Expenses: New Expense
-        function openNewExpenseModalForDay(dayNum) {
-          document.getElementById('inp-exp-cat').innerHTML = state.categories
-            .map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('');
-          const clamped = Math.min(Math.max(1, dayNum || 1), daysInMonth(selectedYear, selectedMonth));
-          document.getElementById('inp-exp-date').value = `${selectedYear}-${String(selectedMonth + 1).padStart(2, '0')}-${String(clamped).padStart(2, '0')}`;
-          document.getElementById('inp-exp-amount').value = '';
-          document.getElementById('inp-exp-note').value = '';
-          openModal('modal-expense');
-          setTimeout(() => document.getElementById('inp-exp-amount').focus(), 60);
-        }
-
         document.getElementById('btn-new-expense').addEventListener('click', () => {
           const d = (selectedYear === now.getFullYear() && selectedMonth === now.getMonth()) ? now.getDate() : 1;
           openNewExpenseModalForDay(d);
@@ -3009,6 +3224,33 @@
         document.getElementById('categories-list').addEventListener('click', e => {
           const btn = e.target.closest('[data-del-cat]');
           if (!btn) return;
+          if (state.categories.length <= 1) {
+            showToast('Keep at least one category.', true);
+            return;
+          }
+          const catId = btn.dataset.delCat;
+          const cat = state.categories.find(c => c.id === catId);
+          if (!cat) return;
+          askConfirm({
+            title: `Delete "${cat.name}"?`,
+            message: 'Existing expenses in this category will remain listed as Other.',
+            onConfirm: () => {
+              state.categories = state.categories.filter(c => c.id !== catId);
+              saveState();
+              renderCategoriesModal();
+              renderExpensesTab();
+              showToast(`Category "${cat.name}" removed`);
+            }
+          });
+        });
+
+        // Bills: Initialize Blank Sheet
+        document.getElementById('btn-init-bills-month').addEventListener('click', () => {
+          initMonthSheet(selectedYear, selectedMonth, true);
+          renderBillsTab();
+          showToast(`Blank sheet created for ${MONTHS_SHORT[selectedMonth]} ${selectedYear}`);
+        });
+
         // Bills: Inline Amount & Due Day Input
         const billsList = document.getElementById('bills-sections-list');
         billsList.addEventListener('input', e => {
@@ -3030,7 +3272,6 @@
                 it.dueDay = parsed;
               }
             }
-            // Auto-sync dueDay to master template for matching item so future months inherit it
             const tmplSec = state.billTemplate.find(s => s.id === secId);
             const tmplIt = tmplSec?.items.find(i => i.id === itemId);
             if (tmplIt) tmplIt.dueDay = it.dueDay;
@@ -3206,7 +3447,29 @@
           const srcKey = monthKey(srcY, srcM);
           const dstKey = monthKey(dstY, dstM);
           const srcLabel = `${MONTHS_SHORT[srcM]} ${srcY}`;
-        // Vault: Exports, Import, Save/Sync Local File, Rollover, Reset
+          const dstLabel = `${MONTHS_SHORT[dstM]} ${dstY}`;
+
+          if (srcKey === dstKey) {
+            showToast('From and To months must be different.', true);
+            return;
+          }
+          if (!state.months[srcKey]) {
+            showToast(`No data found in ${srcLabel} to move.`, true);
+            return;
+          }
+
+          const hasTargetData = monthHasMeaningfulData(state.months[dstKey]);
+          askConfirm({
+            title: `Move ${srcLabel} → ${dstLabel}?`,
+            message: hasTargetData
+              ? `${dstLabel} already has saved data. Moving ${srcLabel} will overwrite ${dstLabel} and clear ${srcLabel}.`
+              : `This will move all budget, expenses, and bills from ${srcLabel} into ${dstLabel} and clear ${srcLabel}.`,
+            confirmLabel: hasTargetData ? 'Overwrite & Move' : 'Move Data',
+            onConfirm: () => executeMoveMonthData(srcY, srcM, dstY, dstM)
+          });
+        });
+
+        // Vault: Save/Sync Local File, Exports, Import, Demo, Rollover, Reset
         document.getElementById('btn-save-sync-file').addEventListener('click', async () => {
           const payload = JSON.stringify(state, null, 2);
           try {
@@ -3236,6 +3499,7 @@
           downloadFile(JSON.stringify(state, null, 2), `kosah_backup_${now.toISOString().slice(0, 10)}.json`, 'application/json');
           showToast('JSON backup downloaded');
         });
+
         document.getElementById('input-import-json').addEventListener('change', e => {
           const file = e.target.files?.[0];
           if (!file) return;
@@ -3261,6 +3525,16 @@
           };
           reader.readAsText(file);
           e.target.value = '';
+        });
+
+        document.getElementById('btn-load-demo').addEventListener('click', () => {
+          const label = `${MONTHS_SHORT[selectedMonth]} ${selectedYear}`;
+          askConfirm({
+            title: `Load Demo Data for ${label}?`,
+            message: `This will populate sample expenses and bills for ${label} so you can preview the calendar dots, charts, and insights.`,
+            confirmLabel: 'Load Demo',
+            onConfirm: loadDemoData
+          });
         });
 
         document.getElementById('btn-toggle-rollover').addEventListener('click', () => {
@@ -3310,6 +3584,7 @@
               initMonthSheet(now.getFullYear(), now.getMonth(), true);
               selectedYear = now.getFullYear();
               selectedMonth = now.getMonth();
+              selectedDay = now.getDate();
               trendFocusMonth = selectedMonth;
               renderCurrentView();
               showToast('Complete vault data reset');
@@ -3328,7 +3603,11 @@
         renderCurrentView();
       }
 
-      document.addEventListener('DOMContentLoaded', init);
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
     })();
   </script>
 </body>
